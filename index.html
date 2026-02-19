@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>My Website</title>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'EB Garamond', Garamond, serif;
+      color: #d6e4d6;
+      background: #002e09;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* NAV */
+    nav {
+      background: #002e09;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    nav .logo { color: #e8f5e8; font-size: 1.4rem; font-weight: bold; }
+    nav ul { list-style: none; display: flex; gap: 0.5rem; }
+    nav ul li button {
+      background: none;
+      border: none;
+      color: #a8c8a8;
+      font-size: 1rem;
+      padding: 0.5rem 1.2rem;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    nav ul li button:hover { color: #e8f5e8; background: rgba(255,255,255,0.08); }
+    nav ul li button.active { color: #e8f5e8; background: rgba(255,255,255,0.15); }
+
+    /* HOME */
+    #home {
+      flex: 1;
+      background: #002e09;
+      color: #e8f5e8;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 4rem 2rem;
+    }
+    #home h1 { font-size: 3rem; margin-bottom: 0.75rem; color: #e8f5e8; }
+    #home p { color: #a8c8a8; font-size: 1.2rem; }
+
+    /* TAB PAGES */
+    .page {
+      display: none;
+      flex: 1;
+      padding: 60px 2rem;
+      max-width: 800px;
+      margin: auto;
+      width: 100%;
+    }
+    .page.active { display: block; }
+    .page h2 { font-size: 2rem; margin-bottom: 1.2rem; color: #e8f5e8; }
+    .page p { color: #b8d4b8; margin-bottom: 1rem; }
+
+    /* WORK CARDS */
+    .cards {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+    .card {
+      background: #002e09;
+      border-radius: 10px;
+      padding: 1.5rem;
+      flex: 1;
+      min-width: 200px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+    .card h3 { margin-bottom: 0.5rem; color: #e8f5e8; }
+    .card p { color: #a8c8a8; font-size: 0.95rem; }
+
+    /* BOOK */
+    #book input,
+    #book textarea {
+      width: 100%;
+      padding: 0.75rem;
+      margin-bottom: 1rem;
+      border: 1px solid #1a5c2a;
+      border-radius: 6px;
+      font-size: 1rem;
+      background: #002e09;
+      color: #e8f5e8;
+    }
+    #book input::placeholder,
+    #book textarea::placeholder { color: #7aaa7a; }
+    #book textarea { height: 130px; resize: vertical; }
+    #book button {
+      background: #007a1e;
+      color: #e8f5e8;
+      border: none;
+      padding: 0.75rem 2rem;
+      border-radius: 30px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+    #book button:hover { background: #009424; }
+
+    /* FOOTER */
+    footer {
+      background: #002e09;
+      color: #7aaa7a;
+      text-align: center;
+      padding: 1.2rem;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">MyWebsite</div>
+    <ul>
+      <li><button class="active" onclick="showTab('home', this)">Home</button></li>
+      <li><button onclick="showTab('work', this)">Work</button></li>
+      <li><button onclick="showTab('about', this)">About</button></li>
+      <li><button onclick="showTab('book', this)">Book</button></li>
+    </ul>
+  </nav>
+
+  <!-- HOME -->
+  <section id="home">
+    <h1>Lydia Tong</h1>
+    <p>Film & Economics at the University of Pennsylvania</p>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="page">
+    <h2>About Me</h2>
+    <p>Write a few sentences about yourself here — who you are, what you do, and what you're passionate about.</p>
+    <p>Feel free to add more paragraphs, a photo, or anything else that tells your story.</p>
+  </section>
+
+  <!-- WORK -->
+  <section id="work" class="page">
+    <h2>My Work</h2>
+    <p>Here are some of my recent projects.</p>
+    <div class="cards">
+      <div class="card">
+        <h3>Project One</h3>
+        <p>A short description of this project and what makes it interesting.</p>
+      </div>
+      <div class="card">
+        <h3>Project Two</h3>
+        <p>A short description of this project and what makes it interesting.</p>
+      </div>
+      <div class="card">
+        <h3>Project Three</h3>
+        <p>A short description of this project and what makes it interesting.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOK -->
+  <section id="book" class="page">
+    <h2>Book a Session</h2>
+    <p>Fill out the form below and I'll get back to you soon.</p>
+    <input type="text" placeholder="Your Name" />
+    <input type="email" placeholder="Your Email" />
+    <input type="text" placeholder="Preferred Date & Time" />
+    <textarea placeholder="Tell me what you need..."></textarea>
+    <button>Send Request</button>
+  </section>
+
+  <footer>
+    <p>© 2026 Lydia Tong</p>
+  </footer>
+
+  <script>
+    function showTab(id, btn) {
+      document.getElementById('home').style.display = 'none';
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+
+      if (id === 'home') {
+        document.getElementById('home').style.display = 'flex';
+      } else {
+        document.getElementById(id).classList.add('active');
+      }
+
+      btn.classList.add('active');
+    }
+  </script>
+
+</body>
+</html>
