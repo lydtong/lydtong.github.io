@@ -3,30 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>My Website</title>
+  <title>Lydia Tong</title>
   <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <style>
-    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
     /* ANIMATIONS */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(30px); }
-      to { opacity: 1; transform: translateY(0); }
+      to   { opacity: 1; transform: translateY(0); }
     }
     @keyframes bounce {
-      0% { opacity: 0; transform: scale(0.8);}
-      60% {transform: scale(1.05); }
-      80% {transform: scale(0.97); }
-      100% {opacity: 1; transform: scale(1); }
+      0%   { opacity: 0; transform: scale(0.8); }
+      60%  { transform: scale(1.05); }
+      80%  { transform: scale(0.97); }
+      100% { opacity: 1; transform: scale(1); }
     }
-    #home h1 {
-      animation: fadeUp 0.8s ease forwards;
-    }
-
-    #home img {
-      animation: bounce 0.9s ease 0.5s forwards;
-      opacity: 0;
-    }
-      *{margin:0;padding:0;box-sizing:border-box;}
+    #home h1  { animation: fadeUp 0.8s ease forwards; }
+    #home p   { animation: fadeUp 0.8s ease 0.3s forwards; opacity: 0; }
+    #home img { animation: bounce 0.9s ease 0.5s forwards; opacity: 0; }
 
     body {
       font-family: 'EB Garamond', Garamond, serif;
@@ -57,11 +52,10 @@
       border-radius: 20px;
       cursor: pointer;
       transition: all 0.2s;
+      font-family: 'EB Garamond', Garamond, serif;
     }
     nav ul li button:hover { color: #e8f5e8; background: rgba(255,255,255,0.08); }
     nav ul li button.active { color: #e8f5e8; background: rgba(255,255,255,0.15); }
-
-    
 
     /* HOME */
     #home {
@@ -75,10 +69,17 @@
       text-align: center;
       padding: 4rem 2rem;
     }
-    #home h1 { font-size: 3rem; margin-bottom: 0.75rem; color: #e8f5e8; }
-    #home p { color: #a8c8a8; font-size: 1.2rem; }
+    #home h1 { font-size: 3rem; margin-bottom: 0; color: #e8f5e8; }
+    #home p  { color: #a8c8a8; font-size: 1.2rem; margin-top: 0; }
+    #home img {
+      width: auto;
+      max-width: 80%;
+      height: auto;
+      border-radius: 12px;
+      margin: 2.5rem 0;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
 
-    /* TAB PAGES */
     /* TAB PAGES */
     .page {
       display: none;
@@ -98,9 +99,7 @@
       gap: 3rem;
       align-items: flex-start;
     }
-    .about-text {
-      flex: 2;
-    }
+    .about-text { flex: 2; }
     .about-images {
       flex: 1;
       display: flex;
@@ -134,30 +133,10 @@
     .card p { color: #a8c8a8; font-size: 0.95rem; }
 
     /* BOOK */
-    #book input,
-    #book textarea {
-      width: 100%;
-      padding: 0.75rem;
-      margin-bottom: 1rem;
-      border: 1px solid #1a5c2a;
-      border-radius: 6px;
-      font-size: 1rem;
-      background: #002e09;
-      color: #e8f5e8;
+    #book iframe {
+      margin-top: 1rem;
+      border-radius: 10px;
     }
-    #book input::placeholder,
-    #book textarea::placeholder { color: #7aaa7a; }
-    #book textarea { height: 130px; resize: vertical; }
-    #book button {
-      background: #007a1e;
-      color: #e8f5e8;
-      border: none;
-      padding: 0.75rem 2rem;
-      border-radius: 30px;
-      font-size: 1rem;
-      cursor: pointer;
-    }
-    #book button:hover { background: #009424; }
 
     /* FOOTER */
     footer {
@@ -184,16 +163,8 @@
   <!-- HOME -->
   <section id="home">
     <h1>Lydia Tong</h1>
-    <img src="IMG_1271.JPG" alt="Lydia Tong" style="width: 250px; border-radius: 50%; margin-top: 1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.4);" />
+    <img src="IMG_1271.JPG" alt="Lydia Tong" />
     <p>Film & Economics at the University of Pennsylvania</p>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about" class="page">
-    <h2>About</h2>
-    <p>I'm a student originally from Bellaire, TX, at the University of Pennsylvania studying Cinema & Media Studies and Economics, with a minor in Consumer Psychology.</p>
-    <p>I currently work at The Philadelphia Inquirer as a Sports Video Production intern, assisting in their video strategy expansion for Philly's professional sports teams.</p>
-    <p>I enjoy backpacking (most recently, the South Rim of the Grand Canyon), intuitive cooking, DJing, and reading film scripts</p>
   </section>
 
   <!-- ABOUT -->
@@ -203,7 +174,7 @@
       <div class="about-text">
         <p>I'm a student originally from Bellaire, TX, at the University of Pennsylvania studying Cinema & Media Studies and Economics, with a minor in Consumer Psychology.</p>
         <p>I currently work at The Philadelphia Inquirer as a Sports Video Production intern, assisting in their video strategy expansion for Philly's professional sports teams.</p>
-        <p>I enjoy backpacking (most recently, the South Rim of the Grand Canyon), intuitive cooking, DJing, and reading film scripts</p>
+        <p>I enjoy backpacking (most recently, the South Rim of the Grand Canyon), intuitive cooking, DJing, and reading film scripts.</p>
       </div>
       <div class="about-images">
         <img src="IMG_1273.JPG" alt="Photo 1" />
@@ -233,16 +204,13 @@
   </section>
 
   <!-- BOOK -->
- 
-<section id="book" class="page">
-  <h2>Book</h2>
-  <p>As serious as you want it to be.</p>
-
-  <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScH3t5Ww47sKxIXhFd9A7cqUUgE2bRlHg8PZBQwOnEd0l2Huw/viewform?embedded=true"
-  width="100%" height="600" frameborder="0">
-  </iframe>
-
-</section>
+  <section id="book" class="page">
+    <h2>Book</h2>
+    <p>As serious as you want it to be.</p>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScH3t5Ww47sKxIXhFd9A7cqUUgE2bRlHg8PZBQwOnEd0l2Huw/viewform?embedded=true"
+    width="100%" height="600" frameborder="0">
+    </iframe>
+  </section>
 
   <footer>
     <p>© 2026 Lydia Tong</p>
@@ -256,6 +224,17 @@
 
       if (id === 'home') {
         document.getElementById('home').style.display = 'flex';
+        const els = [
+          document.querySelector('#home h1'),
+          document.querySelector('#home p'),
+          document.querySelector('#home img')
+        ];
+        els.forEach(el => {
+          if (!el) return;
+          el.style.animation = 'none';
+          el.offsetHeight;
+          el.style.animation = '';
+        });
       } else {
         document.getElementById(id).classList.add('active');
       }
