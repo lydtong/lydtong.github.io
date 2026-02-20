@@ -79,17 +79,41 @@
     #home p { color: #a8c8a8; font-size: 1.2rem; }
 
     /* TAB PAGES */
+    /* TAB PAGES */
     .page {
       display: none;
       flex: 1;
       padding: 60px 2rem;
-      max-width: 800px;
+      max-width: 1100px;
       margin: auto;
       width: 100%;
     }
     .page.active { display: block; }
     .page h2 { font-size: 2rem; margin-bottom: 1.2rem; color: #e8f5e8; }
     .page p { color: #b8d4b8; margin-bottom: 1rem; }
+
+    /* ABOUT LAYOUT */
+    .about-container {
+      display: flex;
+      gap: 3rem;
+      align-items: flex-start;
+    }
+    .about-text {
+      flex: 2;
+    }
+    .about-images {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .about-images img {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
 
     /* WORK CARDS */
     .cards {
@@ -160,6 +184,7 @@
   <!-- HOME -->
   <section id="home">
     <h1>Lydia Tong</h1>
+    <img src="IMG_1271.JPG" alt="Lydia Tong" style="width: 250px; border-radius: 50%; margin-top: 1.5rem; box-shadow: 0 4px 20px rgba(0,0,0,0.4);" />
     <p>Film & Economics at the University of Pennsylvania</p>
   </section>
 
@@ -169,6 +194,22 @@
     <p>I'm a student originally from Bellaire, TX, at the University of Pennsylvania studying Cinema & Media Studies and Economics, with a minor in Consumer Psychology.</p>
     <p>I currently work at The Philadelphia Inquirer as a Sports Video Production intern, assisting in their video strategy expansion for Philly's professional sports teams.</p>
     <p>I enjoy backpacking (most recently, the South Rim of the Grand Canyon), intuitive cooking, DJing, and reading film scripts</p>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="page">
+    <h2>About</h2>
+    <div class="about-container">
+      <div class="about-text">
+        <p>I'm a student originally from Bellaire, TX, at the University of Pennsylvania studying Cinema & Media Studies and Economics, with a minor in Consumer Psychology.</p>
+        <p>I currently work at The Philadelphia Inquirer as a Sports Video Production intern, assisting in their video strategy expansion for Philly's professional sports teams.</p>
+        <p>I enjoy backpacking (most recently, the South Rim of the Grand Canyon), intuitive cooking, DJing, and reading film scripts</p>
+      </div>
+      <div class="about-images">
+        <img src="IMG_1273.JPG" alt="Photo 1" />
+        <img src="IMG_1272.JPG" alt="Photo 2" />
+      </div>
+    </div>
   </section>
 
   <!-- WORK -->
