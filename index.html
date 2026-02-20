@@ -115,34 +115,34 @@
       height: auto;
       border-radius: 0;
       box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-      transform: rotate(2deg);
+      transform: none;
     }
     .about-images img:last-child {
       width: 85%;
       height: auto;
       border-radius: 0;
       box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-      transform: rotate(-1.5deg);
+      transform: rotate(-2deg);
       align-self: flex-end;
     }
 
-    /* WORK CARDS */
-    .cards {
+    /* WORK */
+    .work-list {
       display: flex;
-      gap: 1.5rem;
-      flex-wrap: wrap;
+      flex-direction: column;
+      gap: 2rem;
       margin-top: 1rem;
     }
-    .card {
-      background: #002e09;
-      border-radius: 0;
-      padding: 1.5rem;
-      flex: 1;
-      min-width: 200px;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    .work-item h3 {
+      color: #e8f5e8;
+      font-size: 1.3rem;
+      margin-bottom: 0.3rem;
     }
-    .card h3 { margin-bottom: 0.5rem; color: #e8f5e8; }
-    .card p { color: #a8c8a8; font-size: 0.95rem; }
+    .work-item p {
+      color: #a8c8a8;
+      font-size: 1rem;
+      margin-bottom: 0;
+    }
 
     /* BOOK */
     #book iframe {
@@ -197,16 +197,16 @@
   <!-- WORK -->
   <section id="work" class="page">
     <h2>Work</h2>
-    <div class="cards">
-      <div class="card">
+    <div class="work-list">
+      <div class="work-item">
         <h3>The Philadelphia Inquirer</h3>
         <p>Eagles, Sixers, Phillies, Union, Flyers, College, High School</p>
       </div>
-      <div class="card">
+      <div class="work-item">
         <h3>The Daily Pennsylvanian</h3>
         <p>Super Bowl LIX, Penn Relays, Athletics Coverage</p>
       </div>
-      <div class="card">
+      <div class="work-item">
         <h3>Passion + Freelance</h3>
         <p>Short Films, Scripts, Photoshoots</p>
       </div>
@@ -222,9 +222,6 @@
     </iframe>
   </section>
 
-  <footer>
-    <p>© 2026 Lydia Tong</p>
-  </footer>
 
   <script>
     function showTab(id, btn) {
