@@ -132,7 +132,7 @@
     /* WORK CARDS */
     .cards {
       display: flex;
-      gap: 1.5rem;
+      gap: 2rem;
       flex-wrap: wrap;
       margin-top: 1rem;
     }
@@ -140,27 +140,31 @@
       background: #001a05;
       border: 1px solid #0a1f0d;
       border-radius: 0;
-      padding: 2rem 1.8rem;
+      padding: 3rem 2.5rem;
       flex: 1;
-      min-width: 200px;
+      min-width: 250px;
+      min-height: 200px;
       cursor: pointer;
       box-shadow: 0 6px 24px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.03);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
     }
     .card:hover {
       transform: translateY(-6px);
       box-shadow: 0 16px 40px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.05);
     }
-    .card h3 { margin-bottom: 0.5rem; color: #e8f5e8; font-size: 1.2rem; }
-    .card p { color: #7aaa7a; font-size: 1rem; margin-bottom: 0; }
+    .card h3 { margin-bottom: 0.75rem; color: #e8f5e8; font-size: 1.4rem; }
+    .card p { color: #7aaa7a; font-size: 1.05rem; margin-bottom: 0; }
 
-    /* BOOK IMAGES */
-    .book-images {
+    /* WORK IMAGES */
+    .work-images {
       display: flex;
       gap: 1.5rem;
-      margin: 1.5rem 0 2.5rem 0;
+      margin-top: 3rem;
     }
-    .book-images img {
+    .work-images img {
       flex: 1;
       width: 0;
       aspect-ratio: 3 / 2;
@@ -251,6 +255,10 @@
         <p>Short Films, Scripts, Photoshoots</p>
       </div>
     </div>
+    <div class="work-images">
+      <img src="IMG_7552.JPG" alt="Work photo 1" />
+      <img src="IMG_1274.JPG" alt="Work photo 2" />
+    </div>
   </section>
 
   <!-- PROJECT: Philadelphia Inquirer -->
@@ -281,10 +289,6 @@
   <section id="book" class="page">
     <h2>Book</h2>
     <p>As serious as you want it to be.</p>
-    <div class="book-images">
-      <img src="IMG_7552.JPG" alt="Book photo 1" />
-      <img src="IMG_1274.JPG" alt="Book photo 2" />
-    </div>
     <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScH3t5Ww47sKxIXhFd9A7cqUUgE2bRlHg8PZBQwOnEd0l2Huw/viewform?embedded=true"
     width="100%" height="600" frameborder="0">
     </iframe>
