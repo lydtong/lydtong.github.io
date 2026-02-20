@@ -183,7 +183,7 @@
       width: 100%;
     }
     .project-page.active { display: block; }
-    .project-page h2 { font-size: 2.5rem; margin-bottom: 0.5rem; color: #e8f5e8; }
+    .project-page h2 { font-size: 2.5rem; margin-bottom: 2rem; color: #e8f5e8; }
     .project-page .back-btn {
       background: none;
       border: none;
@@ -197,6 +197,46 @@
     }
     .project-page .back-btn:hover { color: #e8f5e8; }
     .project-page p { color: #b8d4b8; font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem; }
+
+    /* FILM ENTRY LAYOUT */
+    .film-entry {
+      display: flex;
+      gap: 3rem;
+      align-items: flex-start;
+      margin-bottom: 4rem;
+    }
+    .film-info {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+    .film-info h3 {
+      font-size: 1.8rem;
+      color: #e8f5e8;
+      margin-bottom: 0.4rem;
+      line-height: 1.3;
+    }
+    .film-info .film-role {
+      color: #7aaa7a;
+      font-size: 1rem;
+      margin-bottom: 1.2rem;
+    }
+    .film-info p {
+      color: #b8d4b8;
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin-bottom: 0;
+    }
+    .film-video {
+      flex: 1.3;
+    }
+    .film-video iframe {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      display: block;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
 
     /* BOOK */
     #book iframe {
@@ -281,8 +321,20 @@
   <section id="project-freelance" class="project-page">
     <button class="back-btn" onclick="showTab('work', document.querySelector('nav ul li:nth-child(2) button'))">← Back to Work</button>
     <h2>Passion + Freelance</h2>
-    <p>Add your work, videos, photos, and descriptions here.</p>
-    <p>You can write about what you did, what you learned, and add any links or embeds.</p>
+
+    <div class="film-entry">
+      <div class="film-info">
+        <h3>Tunnel Vision: A Short Film</h3>
+        <div class="film-role">Director, Editor</div>
+        <p>TUNNEL VISION is a psychological corporate thriller set within the high-pressure, hyper-competitive culture at the University of Pennsylvania. The story follows Eric and Dalton, two freshman year roommates whose already-fragile bond fractures during the ruthless recruitment process for an elite finance club, the Wharton Investment Banking Group (W.I.B.G.).</p>
+        <p>Eric, an anxious, financially-burdened student, sees the club as his sole chance at a better life. Dalton, the advantaged son of a finance titan, drifts through the process with ease. As the boys navigate misleading clues, long-buried tensions broil over. Their childhood friendship is tested, and their rivalry spirals into a feral, violent confrontation through the historic Quadrangle tunnels.</p>
+        <p>This short film takes a twist on truth to the brutal human cost of privilege, and the systems that uphold them.</p>
+      </div>
+      <div class="film-video">
+        <iframe src="https://www.youtube.com/embed/Vn96L3t_EUo" frameborder="0" allowfullscreen></iframe>
+      </div>
+    </div>
+
   </section>
 
   <!-- BOOK -->
