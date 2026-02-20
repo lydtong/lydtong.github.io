@@ -41,7 +41,12 @@
       justify-content: space-between;
       align-items: center;
     }
-    nav .logo { color: #e8f5e8; font-size: 1.4rem; font-weight: bold; }
+    nav .logo {
+      color: #e8f5e8;
+      font-size: 1.4rem;
+      font-weight: bold;
+      cursor: pointer;
+    }
     nav ul { list-style: none; display: flex; gap: 0.5rem; }
     nav ul li button {
       background: none;
@@ -110,59 +115,84 @@
       gap: 2.5rem;
       padding-top: 0.5rem;
     }
-    .about-images img:first-child {
+    .about-images .img-top {
       width: 100%;
       height: auto;
       border-radius: 0;
       box-shadow: 0 4px 20px rgba(0,0,0,0.4);
       transform: none;
+      display: block;
     }
-    .about-images img:last-child {
+    .about-images .img-bottom {
       width: 85%;
       height: auto;
       border-radius: 0;
       box-shadow: 0 4px 20px rgba(0,0,0,0.4);
       transform: rotate(-2deg);
       align-self: flex-end;
+      display: block;
     }
 
-    /* WORK */
-    .work-list {
+    /* WORK CARDS */
+    .cards {
       display: flex;
-      flex-direction: column;
-      gap: 2rem;
+      gap: 1.5rem;
+      flex-wrap: wrap;
       margin-top: 1rem;
     }
-    .work-item h3 {
-      color: #e8f5e8;
-      font-size: 1.3rem;
-      margin-bottom: 0.3rem;
+    .card {
+      background: #001a05;
+      border: 1px solid #0a1f0d;
+      border-radius: 0;
+      padding: 2rem 1.8rem;
+      flex: 1;
+      min-width: 200px;
+      cursor: pointer;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.03);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
     }
-    .work-item p {
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.05);
+    }
+    .card h3 { margin-bottom: 0.5rem; color: #e8f5e8; font-size: 1.2rem; }
+    .card p { color: #7aaa7a; font-size: 1rem; margin-bottom: 0; }
+
+    /* PROJECT PAGES */
+    .project-page {
+      display: none;
+      flex: 1;
+      padding: 60px 4rem;
+      max-width: 1200px;
+      margin: auto;
+      width: 100%;
+    }
+    .project-page.active { display: block; }
+    .project-page h2 { font-size: 2.5rem; margin-bottom: 0.5rem; color: #e8f5e8; }
+    .project-page .back-btn {
+      background: none;
+      border: none;
       color: #a8c8a8;
+      font-family: 'EB Garamond', Garamond, serif;
       font-size: 1rem;
-      margin-bottom: 0;
+      cursor: pointer;
+      margin-bottom: 2rem;
+      padding: 0;
+      display: inline-block;
     }
+    .project-page .back-btn:hover { color: #e8f5e8; }
+    .project-page p { color: #b8d4b8; font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem; }
 
     /* BOOK */
     #book iframe {
       margin-top: 1rem;
-    }
-
-    /* FOOTER */
-    footer {
-      background: #002e09;
-      color: #7aaa7a;
-      text-align: center;
-      padding: 1.2rem;
-      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
 
   <nav>
-    <div class="logo">Lydia Tong</div>
+    <div class="logo" onclick="showTab('home', document.querySelector('nav button'))">Lydia Tong</div>
     <ul>
       <li><button class="active" onclick="showTab('home', this)">Home</button></li>
       <li><button onclick="showTab('work', this)">Work</button></li>
@@ -188,8 +218,8 @@
         <p>In my free time, I enjoy backpacking (most recently, the South Rim of the Grand Canyon), intuitive cooking, DJing, and reading film scripts.</p>
       </div>
       <div class="about-images">
-        <img src="IMG_1273.JPG" alt="Photo 1" />
-        <img src="IMG_1272.JPG" alt="Photo 2" />
+        <img class="img-top" src="IMG_1273.JPG" alt="Photo 1" />
+        <img class="img-bottom" src="IMG_1272.JPG" alt="Photo 2" />
       </div>
     </div>
   </section>
@@ -197,20 +227,44 @@
   <!-- WORK -->
   <section id="work" class="page">
     <h2>Work</h2>
-    <div class="work-list">
-      <div class="work-item">
+    <div class="cards">
+      <div class="card" onclick="showProject('project-inquirer')">
         <h3>The Philadelphia Inquirer</h3>
         <p>Eagles, Sixers, Phillies, Union, Flyers, College, High School</p>
       </div>
-      <div class="work-item">
+      <div class="card" onclick="showProject('project-dp')">
         <h3>The Daily Pennsylvanian</h3>
         <p>Super Bowl LIX, Penn Relays, Athletics Coverage</p>
       </div>
-      <div class="work-item">
+      <div class="card" onclick="showProject('project-freelance')">
         <h3>Passion + Freelance</h3>
         <p>Short Films, Scripts, Photoshoots</p>
       </div>
     </div>
+  </section>
+
+  <!-- PROJECT: Philadelphia Inquirer -->
+  <section id="project-inquirer" class="project-page">
+    <button class="back-btn" onclick="showTab('work', document.querySelector('nav ul li:nth-child(2) button'))">← Back to Work</button>
+    <h2>The Philadelphia Inquirer</h2>
+    <p>Add your work, videos, photos, and descriptions here.</p>
+    <p>You can write about what you did, what you learned, and add any links or embeds.</p>
+  </section>
+
+  <!-- PROJECT: Daily Pennsylvanian -->
+  <section id="project-dp" class="project-page">
+    <button class="back-btn" onclick="showTab('work', document.querySelector('nav ul li:nth-child(2) button'))">← Back to Work</button>
+    <h2>The Daily Pennsylvanian</h2>
+    <p>Add your work, videos, photos, and descriptions here.</p>
+    <p>You can write about what you did, what you learned, and add any links or embeds.</p>
+  </section>
+
+  <!-- PROJECT: Passion + Freelance -->
+  <section id="project-freelance" class="project-page">
+    <button class="back-btn" onclick="showTab('work', document.querySelector('nav ul li:nth-child(2) button'))">← Back to Work</button>
+    <h2>Passion + Freelance</h2>
+    <p>Add your work, videos, photos, and descriptions here.</p>
+    <p>You can write about what you did, what you learned, and add any links or embeds.</p>
   </section>
 
   <!-- BOOK -->
@@ -222,11 +276,11 @@
     </iframe>
   </section>
 
-
   <script>
     function showTab(id, btn) {
       document.getElementById('home').style.display = 'none';
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.project-page').forEach(p => p.classList.remove('active'));
       document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
 
       if (id === 'home') {
@@ -246,7 +300,17 @@
         document.getElementById(id).classList.add('active');
       }
 
-      btn.classList.add('active');
+      if (btn) btn.classList.add('active');
+    }
+
+    function showProject(id) {
+      document.getElementById('home').style.display = 'none';
+      document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.project-page').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+
+      document.getElementById(id).classList.add('active');
+      document.querySelector('nav ul li:nth-child(2) button').classList.add('active');
     }
   </script>
 
