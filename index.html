@@ -75,7 +75,7 @@
       width: 420px;
       max-width: 90%;
       height: auto;
-      border-radius: 12px;
+      border-radius: 0;
       margin: 2.5rem 0;
       box-shadow: 0 4px 20px rgba(0,0,0,0.4);
     }
@@ -84,34 +84,46 @@
     .page {
       display: none;
       flex: 1;
-      padding: 60px 2rem;
-      max-width: 1100px;
+      padding: 60px 4rem;
+      max-width: 1200px;
       margin: auto;
       width: 100%;
     }
     .page.active { display: block; }
-    .page h2 { font-size: 2rem; margin-bottom: 1.2rem; color: #e8f5e8; }
-    .page p { color: #b8d4b8; margin-bottom: 1rem; }
+    .page h2 { font-size: 2.5rem; margin-bottom: 2.5rem; color: #e8f5e8; }
+    .page p { color: #b8d4b8; margin-bottom: 1.8rem; font-size: 1.1rem; line-height: 1.8; }
 
     /* ABOUT LAYOUT */
     .about-container {
       display: flex;
-      gap: 3rem;
+      gap: 4rem;
       align-items: flex-start;
     }
-    .about-text { flex: 2; }
+    .about-text {
+      flex: 1.2;
+      padding-top: 0.5rem;
+    }
     .about-images {
       flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 1.5rem;
+      gap: 2.5rem;
+      padding-top: 0.5rem;
     }
-    .about-images img {
+    .about-images img:first-child {
       width: 100%;
-      aspect-ratio: 1 / 1;
-      object-fit: cover;
-      border-radius: 10px;
+      height: auto;
+      border-radius: 0;
       box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      transform: rotate(2deg);
+    }
+    .about-images img:last-child {
+      width: 85%;
+      height: auto;
+      border-radius: 0;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      transform: rotate(-1.5deg);
+      align-self: flex-end;
     }
 
     /* WORK CARDS */
@@ -123,7 +135,7 @@
     }
     .card {
       background: #002e09;
-      border-radius: 10px;
+      border-radius: 0;
       padding: 1.5rem;
       flex: 1;
       min-width: 200px;
@@ -135,7 +147,6 @@
     /* BOOK */
     #book iframe {
       margin-top: 1rem;
-      border-radius: 10px;
     }
 
     /* FOOTER */
@@ -172,9 +183,9 @@
     <h2>About</h2>
     <div class="about-container">
       <div class="about-text">
-        <p>I'm a student originally from Bellaire, TX, at the University of Pennsylvania studying Cinema & Media Studies and Economics, with a minor in Consumer Psychology.</p>
-        <p>I currently work at The Philadelphia Inquirer as a Sports Video Production intern, assisting in their video strategy expansion for Philly's professional sports teams.</p>
-        <p>I enjoy backpacking (most recently, the South Rim of the Grand Canyon), intuitive cooking, DJing, and reading film scripts.</p>
+        <p>I'm a student originally from Bellaire, TX, at the University of Pennsylvania studying Economics and Cinema & Media Studies, minoring in Consumer Psychology.</p>
+        <p>I'm a Sports Video Production intern at The Philadelphia Inquirer, assisting in their video strategy expansion for Philly's professional sports teams.</p>
+        <p>In my free time, I enjoy backpacking (most recently, the South Rim of the Grand Canyon), intuitive cooking, DJing, and reading film scripts.</p>
       </div>
       <div class="about-images">
         <img src="IMG_1273.JPG" alt="Photo 1" />
@@ -186,7 +197,6 @@
   <!-- WORK -->
   <section id="work" class="page">
     <h2>Work</h2>
-    <p>Here are some of my recent projects.</p>
     <div class="cards">
       <div class="card">
         <h3>The Philadelphia Inquirer</h3>
