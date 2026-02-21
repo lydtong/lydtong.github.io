@@ -198,6 +198,37 @@
     .project-page .back-btn:hover { color: #e8f5e8; }
     .project-page p { color: #b8d4b8; font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem; }
 
+    /* PHOTO SECTION */
+    .photo-section { margin-bottom: 4rem; }
+    .photo-section h3 {
+      font-size: 1.8rem;
+      color: #e8f5e8;
+      margin-bottom: 0.3rem;
+    }
+    .photo-section .location {
+      color: #7aaa7a;
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .photo-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .photo-grid-4 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .photo-grid-2 img,
+    .photo-grid-4 img {
+      width: 100%;
+      aspect-ratio: 3 / 2;
+      object-fit: cover;
+      display: block;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    }
+
     /* FILM ENTRY LAYOUT */
     .film-entry {
       display: flex;
@@ -226,7 +257,7 @@
       color: #b8d4b8;
       font-size: 1.1rem;
       line-height: 1.8;
-      margin-bottom: 0;
+      margin-bottom: 1rem;
     }
     .film-video {
       flex: 1.3;
@@ -239,9 +270,7 @@
     }
 
     /* BOOK */
-    #book iframe {
-      margin-top: 1rem;
-    }
+    #book iframe { margin-top: 1rem; }
   </style>
 </head>
 <body>
@@ -306,15 +335,39 @@
     <button class="back-btn" onclick="showTab('work', document.querySelector('nav ul li:nth-child(2) button'))">← Back to Work</button>
     <h2>The Philadelphia Inquirer</h2>
     <p>Add your work, videos, photos, and descriptions here.</p>
-    <p>You can write about what you did, what you learned, and add any links or embeds.</p>
   </section>
 
   <!-- PROJECT: Daily Pennsylvanian -->
   <section id="project-dp" class="project-page">
     <button class="back-btn" onclick="showTab('work', document.querySelector('nav ul li:nth-child(2) button'))">← Back to Work</button>
     <h2>The Daily Pennsylvanian</h2>
-    <p>Add your work, videos, photos, and descriptions here.</p>
-    <p>You can write about what you did, what you learned, and add any links or embeds.</p>
+
+    <div class="photo-section">
+      <h3>Super Bowl LIX</h3>
+      <div class="location">New Orleans, LA</div>
+      <div class="photo-grid-2">
+        <img src="dp1.JPG" alt="Super Bowl LIX 1" />
+        <img src="dp2.JPG" alt="Super Bowl LIX 2" />
+        <img src="dp3.JPG" alt="Super Bowl LIX 3" />
+        <img src="dp4.JPG" alt="Super Bowl LIX 4" />
+      </div>
+    </div>
+
+    <div class="photo-section">
+      <h3>Penn Athletics</h3>
+      <div class="location">Philadelphia, PA</div>
+      <div class="photo-grid-4">
+        <img src="dp5.JPG" alt="Penn Athletics 1" />
+        <img src="dp6.JPG" alt="Penn Athletics 2" />
+        <img src="dp7.JPG" alt="Penn Athletics 3" />
+        <img src="dp8.JPG" alt="Penn Athletics 4" />
+        <img src="dp9.JPG" alt="Penn Athletics 5" />
+        <img src="dp10.JPG" alt="Penn Athletics 6" />
+        <img src="dp11.JPG" alt="Penn Athletics 7" />
+        <img src="dp12.JPG" alt="Penn Athletics 8" />
+      </div>
+    </div>
+
   </section>
 
   <!-- PROJECT: Passion + Freelance -->
