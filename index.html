@@ -181,17 +181,16 @@
     .cards {
       display: flex;
       gap: 2rem;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       margin-top: 1rem;
     }
     .card {
       background: #001a05;
       border: 1px solid #0a1f0d;
       border-radius: 0;
-      padding: 3rem 2.5rem;
+      padding: 4rem 3rem;
       flex: 1;
-      min-width: 250px;
-      min-height: 200px;
+      min-height: 280px;
       cursor: pointer;
       box-shadow: 0 6px 24px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.03);
       transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -435,7 +434,7 @@
       .about-container { flex-direction: column; gap: 2.5rem; }
       .about-images { width: 100%; }
       .about-strip img { height: 150px; }
-      .cards { flex-direction: column; }
+      .cards { flex-wrap: wrap; flex-direction: column; }
       .card { min-height: unset; padding: 2rem 1.5rem; }
       .work-images { flex-direction: column; }
       .work-images img { width: 100%; flex: unset; }
