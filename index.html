@@ -19,6 +19,18 @@
       80%  { transform: scale(0.97); }
       100% { opacity: 1; transform: scale(1); }
     }
+    @keyframes pageIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes lbFadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes lbImgIn {
+      from { opacity: 0; transform: scale(0.92); }
+      to   { opacity: 1; transform: scale(1); }
+    }
     #home h1  { animation: fadeUp 0.8s ease forwards; }
     #home p   { animation: fadeUp 0.8s ease 0.3s forwards; opacity: 0; }
     #home img { animation: bounce 0.9s ease 0.5s forwards; opacity: 0; }
@@ -32,6 +44,11 @@
     [data-animate].visible {
       opacity: 1;
       transform: none;
+    }
+
+    /* PAGE TRANSITIONS */
+    .page.active, .project-page.active {
+      animation: pageIn 0.35s ease forwards;
     }
 
     body {
@@ -126,7 +143,7 @@
     }
     .about-images .img-top {
       width: 100%;
-      aspect-ratio: 16 / 9;
+      aspect-ratio: 4 / 3;
       object-fit: cover;
       border-radius: 0;
       box-shadow: 0 4px 20px rgba(0,0,0,0.4);
@@ -159,7 +176,7 @@
       cursor: pointer;
       transition: opacity 0.2s;
     }
-    .about-strip img:hover { opacity: 0.8; }
+    .about-strip img:hover { opacity: 0.8; transform: scale(1.02); }
 
     /* WORK CARDS */
     .cards {
@@ -185,7 +202,8 @@
     }
     .card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 16px 40px rgba(0,0,0,0.7), inset 0 1px 0 rgba(255,255,255,0.05);
+      border-color: #2a5c2a;
+      box-shadow: 0 16px 40px rgba(0,0,0,0.7), 0 0 0 1px #1a4c1a, inset 0 1px 0 rgba(255,255,255,0.05);
     }
     .card h3 { margin-bottom: 0.75rem; color: #e8f5e8; font-size: 1.4rem; }
     .card p { color: #7aaa7a; font-size: 1.05rem; margin-bottom: 0; }
@@ -292,21 +310,22 @@
 
     /* PHOTO GRID */
     .photo-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 1rem;
+      columns: 3;
+      column-gap: 1rem;
       margin-top: 2rem;
     }
     .photo-grid img {
       width: 100%;
-      aspect-ratio: 3 / 2;
-      object-fit: cover;
-      cursor: pointer;
-      transition: opacity 0.2s;
       display: block;
+      margin-bottom: 1rem;
+      break-inside: avoid;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.5s ease, transform 0.3s ease;
       box-shadow: 0 2px 10px rgba(0,0,0,0.35);
     }
-    .photo-grid img:hover { opacity: 0.8; }
+    .photo-grid img.visible { opacity: 1; }
+    .photo-grid img:hover { opacity: 0.85; transform: scale(1.02); }
 
     /* SECTION DIVIDER */
     .section-divider {
@@ -331,9 +350,15 @@
       justify-content: center;
       padding: 2rem;
     }
-    #lightbox.open { display: flex; }
+    #lightbox.open {
+      display: flex;
+      animation: lbFadeIn 0.25s ease forwards;
+    }
+    #lightbox.open #lightbox-img {
+      animation: lbImgIn 0.25s ease forwards;
+    }
     #lightbox img {
-      max-width: 90vw;
+      max-width: 80vw;
       max-height: 88vh;
       object-fit: contain;
       box-shadow: 0 8px 40px rgba(0,0,0,0.8);
@@ -350,8 +375,28 @@
       line-height: 1;
       font-family: sans-serif;
       transition: color 0.2s;
+      z-index: 1001;
     }
     #lightbox-close:hover { color: #e8f5e8; }
+    .lb-arrow {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      background: none;
+      border: none;
+      color: #a8c8a8;
+      font-size: 2.5rem;
+      cursor: pointer;
+      padding: 1rem;
+      font-family: sans-serif;
+      transition: color 0.2s;
+      z-index: 1001;
+      line-height: 1;
+      user-select: none;
+    }
+    .lb-arrow:hover { color: #e8f5e8; }
+    #lb-prev { left: 1rem; }
+    #lb-next { right: 4rem; }
 
     /* FOOTER */
     footer {
@@ -397,7 +442,7 @@
       .work-images img { width: 100%; flex: unset; }
       .film-entry { flex-direction: column; gap: 2rem; }
       .film-video { width: 100%; }
-      .photo-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+      .photo-grid { columns: 2; }
       footer { flex-wrap: wrap; gap: 1.2rem; }
       .page h2, .project-page h2 { font-size: 2rem; }
     }
@@ -436,10 +481,9 @@
       </div>
     </div>
     <div class="about-strip" data-animate>
-      <img src="B&W/IMG_0470.JPG" alt="Photo" onclick="openLightbox(this.src)" />
-      <img src="B&W/IMG_2600.JPG" alt="Photo" onclick="openLightbox(this.src)" />
-      <img src="B&W/IMG_7552.JPG" alt="Photo" onclick="openLightbox(this.src)" />
-      <img src="B&W/IMG_1274.JPG" alt="Photo" onclick="openLightbox(this.src)" />
+      <img src="B&W/IMG_2600.JPG" alt="Photo" onclick="openLightbox(this)" />
+      <img src="B&W/IMG_7552.JPG" alt="Photo" onclick="openLightbox(this)" />
+      <img src="B&W/IMG_1274.JPG" alt="Photo" onclick="openLightbox(this)" />
     </div>
   </section>
 
@@ -517,19 +561,19 @@
     <h2 data-animate>The Daily Pennsylvanian</h2>
     <p data-animate>Previous Sports Media Editor at The Daily Pennsylvanian. Notable coverage features Super Bowl LIX, Penn Relays, and every Penn Athletics game during season.</p>
 
-    <div class="photo-grid" data-animate>
-      <img src="DP/dp1.jpg"  alt="DP photo" onclick="openLightbox(this.src)" />
-      <img src="DP/dp2.jpg"  alt="DP photo" onclick="openLightbox(this.src)" />
-      <img src="DP/dp3.jpg"  alt="DP photo" onclick="openLightbox(this.src)" />
-      <img src="DP/dp4.jpg"  alt="DP photo" onclick="openLightbox(this.src)" />
-      <img src="DP/dp5.jpg"  alt="DP photo" onclick="openLightbox(this.src)" />
-      <img src="DP/dp6.jpg"  alt="DP photo" onclick="openLightbox(this.src)" />
-      <img src="DP/dp7.jpg"  alt="DP photo" onclick="openLightbox(this.src)" />
-      <img src="DP/dp8.jpg"  alt="DP photo" onclick="openLightbox(this.src)" />
-      <img src="DP/dp9.jpg"  alt="DP photo" onclick="openLightbox(this.src)" />
-      <img src="DP/dp10.jpg" alt="DP photo" onclick="openLightbox(this.src)" />
-      <img src="DP/dp11.jpg" alt="DP photo" onclick="openLightbox(this.src)" />
-      <img src="DP/dp12.jpg" alt="DP photo" onclick="openLightbox(this.src)" />
+    <div class="photo-grid">
+      <img src="DP/dp1.jpg"  alt="DP photo" onclick="openLightbox(this)" />
+      <img src="DP/dp2.jpg"  alt="DP photo" onclick="openLightbox(this)" />
+      <img src="DP/dp3.jpg"  alt="DP photo" onclick="openLightbox(this)" />
+      <img src="DP/dp4.jpg"  alt="DP photo" onclick="openLightbox(this)" />
+      <img src="DP/dp5.jpg"  alt="DP photo" onclick="openLightbox(this)" />
+      <img src="DP/dp6.jpg"  alt="DP photo" onclick="openLightbox(this)" />
+      <img src="DP/dp7.jpg"  alt="DP photo" onclick="openLightbox(this)" />
+      <img src="DP/dp8.jpg"  alt="DP photo" onclick="openLightbox(this)" />
+      <img src="DP/dp9.jpg"  alt="DP photo" onclick="openLightbox(this)" />
+      <img src="DP/dp10.jpg" alt="DP photo" onclick="openLightbox(this)" />
+      <img src="DP/dp11.jpg" alt="DP photo" onclick="openLightbox(this)" />
+      <img src="DP/dp12.jpg" alt="DP photo" onclick="openLightbox(this)" />
     </div>
   </section>
 
@@ -555,31 +599,31 @@
 
     <h3 data-animate>Photography</h3>
 
-    <div class="photo-grid" data-animate>
-      <img src="Freelance/12-LYD05008.jpg"     alt="Freelance photo" onclick="openLightbox(this.src)" />
-      <img src="Freelance/142-LYD06513.jpg"    alt="Freelance photo" onclick="openLightbox(this.src)" />
-      <img src="Freelance/233-LYD07346.jpg"    alt="Freelance photo" onclick="openLightbox(this.src)" />
-      <img src="Freelance/261-LYD07511.jpg"    alt="Freelance photo" onclick="openLightbox(this.src)" />
-      <img src="Freelance/303-LYD07934.jpg"    alt="Freelance photo" onclick="openLightbox(this.src)" />
-      <img src="Freelance/LYD-1767.jpg"        alt="Freelance photo" onclick="openLightbox(this.src)" />
-      <img src="Freelance/LYD-4682.jpg"        alt="Freelance photo" onclick="openLightbox(this.src)" />
-      <img src="Freelance/LYD02538 (1).jpg"    alt="Freelance photo" onclick="openLightbox(this.src)" />
-      <img src="Freelance/LYD02538.jpg"        alt="Freelance photo" onclick="openLightbox(this.src)" />
-      <img src="Freelance/LYD02788.jpg"        alt="Freelance photo" onclick="openLightbox(this.src)" />
-      <img src="Freelance/LYD02817.JPG"        alt="Freelance photo" onclick="openLightbox(this.src)" />
-      <img src="Freelance/LYD02890.jpg"        alt="Freelance photo" onclick="openLightbox(this.src)" />
-      <img src="Freelance/LYD04501.JPG"        alt="Freelance photo" onclick="openLightbox(this.src)" />
-      <img src="Freelance/LYD04527.JPG"        alt="Freelance photo" onclick="openLightbox(this.src)" />
-      <img src="Freelance/LYD04545.jpg"        alt="Freelance photo" onclick="openLightbox(this.src)" />
-      <img src="Freelance/LYD05370.jpg"        alt="Freelance photo" onclick="openLightbox(this.src)" />
-      <img src="Freelance/LYD05817.jpg"        alt="Freelance photo" onclick="openLightbox(this.src)" />
-      <img src="Freelance/LYD05944.jpg"        alt="Freelance photo" onclick="openLightbox(this.src)" />
-      <img src="Freelance/LYD06285.jpg"        alt="Freelance photo" onclick="openLightbox(this.src)" />
-      <img src="Freelance/LYD06535.JPG"        alt="Freelance photo" onclick="openLightbox(this.src)" />
-      <img src="Freelance/LYD06546.JPG"        alt="Freelance photo" onclick="openLightbox(this.src)" />
-      <img src="Freelance/LYD07130.jpg"        alt="Freelance photo" onclick="openLightbox(this.src)" />
-      <img src="Freelance/LYD07865.jpg"        alt="Freelance photo" onclick="openLightbox(this.src)" />
-      <img src="Freelance/LYD08834.JPG"        alt="Freelance photo" onclick="openLightbox(this.src)" />
+    <div class="photo-grid">
+      <img src="Freelance/12-LYD05008.jpg"     alt="Freelance photo" onclick="openLightbox(this)" />
+      <img src="Freelance/142-LYD06513.jpg"    alt="Freelance photo" onclick="openLightbox(this)" />
+      <img src="Freelance/233-LYD07346.jpg"    alt="Freelance photo" onclick="openLightbox(this)" />
+      <img src="Freelance/261-LYD07511.jpg"    alt="Freelance photo" onclick="openLightbox(this)" />
+      <img src="Freelance/303-LYD07934.jpg"    alt="Freelance photo" onclick="openLightbox(this)" />
+      <img src="Freelance/LYD-1767.jpg"        alt="Freelance photo" onclick="openLightbox(this)" />
+      <img src="Freelance/LYD-4682.jpg"        alt="Freelance photo" onclick="openLightbox(this)" />
+      <img src="Freelance/LYD02538 (1).jpg"    alt="Freelance photo" onclick="openLightbox(this)" />
+      <img src="Freelance/LYD02538.jpg"        alt="Freelance photo" onclick="openLightbox(this)" />
+      <img src="Freelance/LYD02788.jpg"        alt="Freelance photo" onclick="openLightbox(this)" />
+      <img src="Freelance/LYD02817.JPG"        alt="Freelance photo" onclick="openLightbox(this)" />
+      <img src="Freelance/LYD02890.jpg"        alt="Freelance photo" onclick="openLightbox(this)" />
+      <img src="Freelance/LYD04501.JPG"        alt="Freelance photo" onclick="openLightbox(this)" />
+      <img src="Freelance/LYD04527.JPG"        alt="Freelance photo" onclick="openLightbox(this)" />
+      <img src="Freelance/LYD04545.jpg"        alt="Freelance photo" onclick="openLightbox(this)" />
+      <img src="Freelance/LYD05370.jpg"        alt="Freelance photo" onclick="openLightbox(this)" />
+      <img src="Freelance/LYD05817.jpg"        alt="Freelance photo" onclick="openLightbox(this)" />
+      <img src="Freelance/LYD05944.jpg"        alt="Freelance photo" onclick="openLightbox(this)" />
+      <img src="Freelance/LYD06285.jpg"        alt="Freelance photo" onclick="openLightbox(this)" />
+      <img src="Freelance/LYD06535.JPG"        alt="Freelance photo" onclick="openLightbox(this)" />
+      <img src="Freelance/LYD06546.JPG"        alt="Freelance photo" onclick="openLightbox(this)" />
+      <img src="Freelance/LYD07130.jpg"        alt="Freelance photo" onclick="openLightbox(this)" />
+      <img src="Freelance/LYD07865.jpg"        alt="Freelance photo" onclick="openLightbox(this)" />
+      <img src="Freelance/LYD08834.JPG"        alt="Freelance photo" onclick="openLightbox(this)" />
     </div>
   </section>
 
@@ -595,6 +639,8 @@
   <!-- LIGHTBOX -->
   <div id="lightbox" onclick="closeLightboxOnBackdrop(event)">
     <button id="lightbox-close" onclick="closeLightbox()" aria-label="Close">×</button>
+    <button class="lb-arrow" id="lb-prev" onclick="shiftLightbox(-1)" aria-label="Previous">&#8249;</button>
+    <button class="lb-arrow" id="lb-next" onclick="shiftLightbox(1)" aria-label="Next">&#8250;</button>
     <img id="lightbox-img" src="" alt="Expanded photo" />
   </div>
 
@@ -664,25 +710,60 @@
     }
 
     /* ---- LIGHTBOX ---- */
-    function openLightbox(src) {
-      document.getElementById('lightbox-img').src = src;
-      document.getElementById('lightbox').classList.add('open');
+    let currentGallery = [];
+    let currentIndex = 0;
+
+    function openLightbox(imgEl) {
+      // Collect sibling images from the same gallery container
+      const container = imgEl.closest('.photo-grid, .about-strip');
+      if (container) {
+        currentGallery = Array.from(container.querySelectorAll('img'));
+        currentIndex = currentGallery.indexOf(imgEl);
+      } else {
+        currentGallery = [imgEl];
+        currentIndex = 0;
+      }
+
+      const hasSiblings = currentGallery.length > 1;
+      document.getElementById('lb-prev').style.display = hasSiblings ? '' : 'none';
+      document.getElementById('lb-next').style.display = hasSiblings ? '' : 'none';
+
+      const lb = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lightbox-img');
+      lbImg.src = imgEl.src;
+      lb.classList.add('open');
       document.body.style.overflow = 'hidden';
     }
+
+    function shiftLightbox(dir) {
+      if (!currentGallery.length) return;
+      currentIndex = (currentIndex + dir + currentGallery.length) % currentGallery.length;
+      const lbImg = document.getElementById('lightbox-img');
+      lbImg.style.animation = 'none';
+      lbImg.offsetHeight;
+      lbImg.style.animation = '';
+      lbImg.src = currentGallery[currentIndex].src;
+    }
+
     function closeLightbox() {
       document.getElementById('lightbox').classList.remove('open');
       document.getElementById('lightbox-img').src = '';
       document.body.style.overflow = '';
+      currentGallery = [];
     }
+
     function closeLightboxOnBackdrop(e) {
       if (e.target === document.getElementById('lightbox')) closeLightbox();
     }
+
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft')  shiftLightbox(-1);
+      if (e.key === 'ArrowRight') shiftLightbox(1);
     });
 
     /* ---- SCROLL ANIMATIONS ---- */
-    const observer = new IntersectionObserver((entries) => {
+    const animObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
@@ -690,10 +771,21 @@
       });
     }, { threshold: 0.12 });
 
-    function observeAnimated() {
-      document.querySelectorAll('[data-animate]').forEach(el => {
-        observer.observe(el);
+    // Staggered image reveal for photo grids
+    const gridObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.querySelectorAll('img').forEach((img, i) => {
+            setTimeout(() => img.classList.add('visible'), Math.min(i * 50, 500));
+          });
+          gridObserver.unobserve(entry.target);
+        }
       });
+    }, { threshold: 0.05 });
+
+    function observeAnimated() {
+      document.querySelectorAll('[data-animate]').forEach(el => animObserver.observe(el));
+      document.querySelectorAll('.photo-grid').forEach(el => gridObserver.observe(el));
     }
     observeAnimated();
   </script>
