@@ -4,209 +4,316 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Lydia Tong</title>
-  <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-    /* ANIMATIONS */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes bounce {
-      0%   { opacity: 0; transform: scale(0.8); }
-      60%  { transform: scale(1.05); }
-      80%  { transform: scale(0.97); }
-      100% { opacity: 1; transform: scale(1); }
-    }
-    @keyframes pageIn {
-      from { opacity: 0; transform: translateY(8px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes lbFadeIn {
-      from { opacity: 0; }
-      to   { opacity: 1; }
-    }
-    @keyframes lbImgIn {
-      from { opacity: 0; transform: scale(0.92); }
-      to   { opacity: 1; transform: scale(1); }
-    }
-    #home h1  { animation: fadeUp 0.8s ease forwards; }
-    #home p   { animation: fadeUp 0.8s ease 0.3s forwards; opacity: 0; }
-    #home img { animation: bounce 0.9s ease 0.5s forwards; opacity: 0; }
-
-    /* SCROLL ANIMATIONS */
-    [data-animate] {
-      opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.65s ease, transform 0.65s ease;
-    }
-    [data-animate].visible {
-      opacity: 1;
-      transform: none;
-    }
-
-    /* PAGE TRANSITIONS */
-    .page.active, .project-page.active {
-      animation: pageIn 0.35s ease forwards;
+    :root {
+      --white:      #f6f9f6;
+      --dark-green: #002e09;
+      --mid-green:  #1a4a1a;
+      --text:       #0d1a0d;
+      --muted:      #4a6b4a;
+      --border:     rgba(0,46,9,0.1);
+      --border-dark:rgba(214,232,214,0.1);
+      --card-bg:    #eef4ee;
     }
 
     body {
-      font-family: 'Libre Caslon Display', serif;
-      color: #d6e4d6;
-      background: #002e09;
+      font-family: 'Libre Caslon Display', Georgia, serif;
+      background: var(--white);
+      color: var(--text);
       line-height: 1.6;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
     }
 
-    /* NAV */
-    nav {
-      background: #002e09;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 0.25rem;
+    /* ── SCREENPLAY / MONOSPACE ELEMENTS ─────────── */
+    .slug {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      color: var(--muted);
+      text-transform: uppercase;
+      display: block;
+      margin-bottom: 1rem;
     }
-    nav ul { list-style: none; display: flex; gap: 0.5rem; flex-wrap: wrap; }
+    .film-role {
+      font-family: 'Courier Prime', monospace;
+    }
+
+    /* ── ANIMATIONS ───────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes bounce {
+      0%   { opacity: 0; transform: scale(0.92); }
+      60%  { transform: scale(1.03); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; } to { opacity: 1; }
+    }
+    @keyframes pageIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes lbFadeIn {
+      from { opacity: 0; } to { opacity: 1; }
+    }
+    @keyframes lbImgIn {
+      from { opacity: 0; transform: scale(0.94); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    #home h1         { animation: fadeUp 0.8s ease forwards; }
+    #home p          { animation: fadeUp 0.8s ease 0.3s forwards; opacity: 0; }
+    #home .home-sub  { animation: fadeUp 0.8s ease 0.45s forwards; opacity: 0; }
+    #home .home-frame{ animation: bounce 0.9s ease 0.55s forwards; opacity: 0; }
+
+    [data-animate] {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.65s ease, transform 0.65s ease;
+    }
+    [data-animate].visible { opacity: 1; transform: none; }
+
+    .page.active, .project-page.active {
+      animation: pageIn 0.35s ease forwards;
+    }
+
+    /* ── NAV ──────────────────────────────────────── */
+    nav {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      padding: 1.1rem 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav-logo {
+      font-family: 'Libre Caslon Display', serif;
+      font-size: 0.95rem;
+      color: var(--dark-green);
+      background: none;
+      border: none;
+      cursor: pointer;
+      letter-spacing: 0.02em;
+    }
+    nav ul { list-style: none; display: flex; gap: 0.5rem; }
     nav ul li button {
       background: none;
       border: none;
-      color: #a8c8a8;
-      font-size: 1rem;
-      padding: 0.5rem 1.2rem;
+      color: var(--muted);
+      font-size: 0.9rem;
+      padding: 0.45rem 1.1rem;
       border-radius: 20px;
       cursor: pointer;
       transition: all 0.2s;
       font-family: 'Libre Caslon Display', serif;
     }
-    nav ul li button:hover { color: #e8f5e8; background: rgba(255,255,255,0.08); }
-    nav ul li button.active { color: #e8f5e8; background: rgba(255,255,255,0.15); }
+    nav ul li button:hover  { color: var(--dark-green); background: rgba(0,46,9,0.06); }
+    nav ul li button.active { color: var(--dark-green); background: rgba(0,46,9,0.1); }
 
-    /* HOME */
+    /* ── HOME ─────────────────────────────────────── */
     #home {
       flex: 1;
-      background: #002e09;
-      color: #e8f5e8;
+      background: var(--dark-green);
+      color: #d6e8d6;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 4rem 2rem;
+      padding: 5rem 2rem;
     }
-    #home h1 { font-size: 3rem; margin-bottom: 0; color: #e8f5e8; }
-    #home p  { color: #a8c8a8; font-size: 1.2rem; margin-top: 0; }
-    #home img {
-      width: 420px;
-      max-width: 90%;
-      height: auto;
-      border-radius: 0;
-      margin: 2.5rem 0;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    /* Title card */
+    .home-title-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      margin-bottom: 0.5rem;
     }
+    .title-rule {
+      width: 48px;
+      height: 1px;
+      background: rgba(168,200,168,0.35);
+      margin: 1rem 0;
+    }
+    #home h1  { font-size: 3rem; color: #e8f5e8; margin: 0; letter-spacing: 0.04em; }
+    #home .home-sub {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      color: rgba(168,200,168,0.5);
+      text-transform: uppercase;
+      margin-top: 0;
+    }
+    #home p   { color: #a8c8a8; font-size: 1.15rem; margin-top: 0.4rem; }
 
-    /* TAB PAGES */
+    /* Cinematic photo frame */
+    .home-frame {
+      position: relative;
+      margin: 2.5rem 0;
+      display: inline-block;
+    }
+    .home-frame img {
+      width: 420px;
+      max-width: 90vw;
+      height: auto;
+      display: block;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.45);
+    }
+    /* Letterbox bars */
+    .home-frame::before,
+    .home-frame::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0;
+      height: 10px;
+      background: var(--dark-green);
+      z-index: 2;
+    }
+    .home-frame::before { top: 0; }
+    .home-frame::after  { bottom: 0; }
+
+    /* ── PAGES ────────────────────────────────────── */
     .page {
       display: none;
       flex: 1;
-      padding: 60px 4rem;
+      padding: 5rem 5rem 5rem;
       max-width: 1200px;
       margin: auto;
       width: 100%;
     }
     .page.active { display: block; }
-    .page h2 { font-size: 2.5rem; margin-bottom: 2.5rem; color: #e8f5e8; }
-    .page p { color: #b8d4b8; margin-bottom: 1.8rem; font-size: 1.1rem; line-height: 1.8; }
+    .page h2 {
+      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      margin-bottom: 2.5rem;
+      color: var(--dark-green);
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
 
-    /* ABOUT LAYOUT */
+    /* ── ABOUT ────────────────────────────────────── */
     .about-container {
       display: flex;
       gap: 4rem;
-      align-items: center;
+      align-items: flex-start;
     }
-    .about-text {
-      flex: 1.2;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+    .about-text { flex: 1.2; }
+    .about-text p {
+      color: #2a3d2a;
+      font-size: 1.05rem;
+      line-height: 1.85;
+      margin-bottom: 1.5rem;
     }
     .about-images {
       flex: 1;
       display: flex;
       flex-direction: column;
-      gap: 2.5rem;
+      gap: 2rem;
       align-items: center;
     }
     .about-images .img-top {
       width: 100%;
-      aspect-ratio: 4 / 3;
+      aspect-ratio: 4/3;
       object-fit: cover;
-      border-radius: 0;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-      transform: none;
       display: block;
+      box-shadow: 0 2px 16px rgba(0,46,9,0.15);
     }
     .about-images .img-bottom {
-      width: 85%;
-      height: auto;
-      border-radius: 0;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-      transform: rotate(-2deg);
+      width: 82%;
       display: block;
+      box-shadow: 0 2px 16px rgba(0,46,9,0.15);
+      transform: rotate(-2deg);
     }
 
-    /* ABOUT PHOTO STRIP */
     .about-strip {
-      display: flex;
-      gap: 0;
-      margin-top: 3.5rem;
-      justify-content: space-evenly;
-      align-items: center;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-top: 4rem;
+      padding-top: 3.5rem;
+      border-top: 1px solid var(--border);
     }
     .about-strip img {
-      height: 320px;
-      width: auto;
+      width: 100%;
+      aspect-ratio: 3/4;
       object-fit: cover;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      display: block;
       cursor: pointer;
       transition: opacity 0.2s, transform 0.25s;
+      box-shadow: 0 2px 10px rgba(0,46,9,0.1);
     }
-    .about-strip img:hover { opacity: 0.8; transform: scale(1.02); }
+    .about-strip img:hover { opacity: 0.82; transform: scale(1.02); }
 
-    /* WORK CARDS */
-    .cards {
-      display: flex;
+    /* ── WORK (dark section, full-width) ──────────── */
+    #work.page {
+      max-width: none;
+      padding: 0;
+      background: var(--dark-green);
+    }
+    .work-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 5rem;
+    }
+    #work h2 { color: #e8f5e8; }
+
+    .work-list { border-top: 1px solid var(--border-dark); }
+
+    .work-item {
+      display: grid;
+      grid-template-columns: 3.5rem 1fr auto;
       gap: 2rem;
-      flex-wrap: nowrap;
-      margin-top: 1rem;
-    }
-    .card {
-      background: #001a05;
-      border: 1px solid #0a1f0d;
-      border-radius: 0;
-      padding: 4rem 3rem;
-      flex: 1;
-      min-height: 280px;
+      align-items: center;
+      padding: 2.2rem 0;
+      border-bottom: 1px solid var(--border-dark);
       cursor: pointer;
-      box-shadow: 0 6px 24px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.03);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
+      transition: background 0.2s, padding 0.2s;
     }
-    .card:hover {
-      transform: translateY(-6px);
-      border-color: #2a5c2a;
-      box-shadow: 0 16px 40px rgba(0,0,0,0.7), 0 0 0 1px #1a4c1a, inset 0 1px 0 rgba(255,255,255,0.05);
+    .work-item:hover {
+      background: rgba(255,255,255,0.04);
+      padding-left: 1rem;
+      padding-right: 1rem;
+      margin: 0 -1rem;
     }
-    .card h3 { margin-bottom: 0.75rem; color: #e8f5e8; font-size: 1.4rem; }
-    .card p { color: #7aaa7a; font-size: 1.05rem; margin-bottom: 0; }
+    .work-num {
+      font-size: 0.75rem;
+      color: rgba(168,200,168,0.35);
+      letter-spacing: 0.08em;
+      align-self: flex-start;
+      padding-top: 0.35rem;
+    }
+    .work-info h3 {
+      font-size: clamp(1.3rem, 2.2vw, 1.9rem);
+      color: #e8f5e8;
+      margin-bottom: 0.4rem;
+      line-height: 1.15;
+      transition: color 0.2s;
+    }
+    .work-item:hover .work-info h3 { color: #fff; }
+    .work-info p {
+      font-size: 0.9rem;
+      color: rgba(168,200,168,0.55);
+    }
+    .work-arrow {
+      font-size: 1.5rem;
+      color: rgba(168,200,168,0.2);
+      transition: color 0.2s, transform 0.2s;
+      font-family: sans-serif;
+      line-height: 1;
+    }
+    .work-item:hover .work-arrow { color: #a8c8a8; transform: translateX(5px); }
 
-    /* WORK IMAGES */
+    /* Work preview images */
     .work-images {
       display: flex;
       gap: 1.5rem;
@@ -215,129 +322,138 @@
     .work-images img {
       flex: 1;
       width: 0;
-      aspect-ratio: 3 / 2;
+      aspect-ratio: 3/2;
       object-fit: cover;
       display: block;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.35);
     }
 
-    /* PROJECT PAGES */
+    /* ── PROJECT PAGES ────────────────────────────── */
     .project-page {
       display: none;
       flex: 1;
-      padding: 60px 4rem;
+      padding: 5rem;
       max-width: 1200px;
       margin: auto;
       width: 100%;
     }
     .project-page.active { display: block; }
-    .project-page h2 { font-size: 2.5rem; margin-bottom: 2rem; color: #e8f5e8; }
-    .project-page .back-btn {
+
+    .back-btn {
       background: none;
       border: none;
-      color: #a8c8a8;
+      color: var(--muted);
       font-family: 'Libre Caslon Display', serif;
-      font-size: 1rem;
+      font-size: 0.9rem;
       cursor: pointer;
-      margin-bottom: 2rem;
       padding: 0;
+      margin-bottom: 2rem;
       display: inline-block;
+      transition: color 0.2s;
     }
-    .project-page .back-btn:hover { color: #e8f5e8; }
-    .project-page p { color: #b8d4b8; font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem; }
-    .project-page h3 { font-size: 1.6rem; color: #e8f5e8; margin: 2.5rem 0 1rem; }
+    .back-btn:hover { color: var(--dark-green); }
 
-    /* FILM ENTRY LAYOUT */
+    .project-page h2 {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      margin-bottom: 1.5rem;
+      color: var(--dark-green);
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+    .project-page > p {
+      color: #2a3d2a;
+      font-size: 1.05rem;
+      line-height: 1.85;
+      margin-bottom: 1.5rem;
+      max-width: 700px;
+    }
+    .project-page h3 {
+      font-size: 1.5rem;
+      color: var(--dark-green);
+      margin: 2.5rem 0 1rem;
+    }
+
+    /* FILM ENTRY */
     .film-entry {
       display: flex;
-      gap: 3rem;
+      gap: 3.5rem;
       align-items: flex-start;
       margin-bottom: 4rem;
+      padding-top: 3rem;
+      border-top: 1px solid var(--border);
     }
-    .film-info {
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-    }
+    .film-info { flex: 1; }
     .film-info h3 {
-      font-size: 1.8rem;
-      color: #e8f5e8;
-      margin-bottom: 0.4rem;
+      font-size: 1.7rem;
+      color: var(--dark-green);
+      margin-bottom: 0.35rem;
+      line-height: 1.2;
       margin-top: 0;
-      line-height: 1.3;
     }
-    .film-info .film-role {
-      color: #7aaa7a;
-      font-size: 1rem;
+    .film-role {
+      color: var(--muted);
+      font-size: 0.9rem;
       margin-bottom: 1.2rem;
+      letter-spacing: 0.04em;
     }
     .film-info p {
-      color: #b8d4b8;
-      font-size: 1.1rem;
-      line-height: 1.8;
-      margin-bottom: 0;
+      color: #2a3d2a;
+      font-size: 1rem;
+      line-height: 1.85;
+      margin-bottom: 1rem;
     }
-    .film-video {
-      flex: 1.3;
-    }
+    .film-video { flex: 1.3; }
     .film-video iframe {
       width: 100%;
-      aspect-ratio: 16 / 9;
+      aspect-ratio: 16/9;
       display: block;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+      border: none;
+      box-shadow: 0 4px 20px rgba(0,46,9,0.15);
     }
-
-    /* VIDEO PLACEHOLDER */
     .video-placeholder {
       width: 100%;
-      aspect-ratio: 16 / 9;
-      background: #001a05;
-      border: 1px dashed #2a5c2a;
+      aspect-ratio: 16/9;
+      background: var(--card-bg);
+      border: 1px dashed rgba(0,46,9,0.18);
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.4);
     }
     .video-placeholder p {
-      color: #4a7a4a;
-      font-size: 1rem;
+      color: var(--muted);
+      font-size: 0.9rem;
       margin: 0;
-      text-align: center;
     }
 
     /* PHOTO GRID */
     .photo-grid {
       columns: 3;
-      column-gap: 1rem;
+      column-gap: 0.85rem;
       margin-top: 2rem;
     }
     .photo-grid img {
       width: 100%;
       display: block;
-      margin-bottom: 1rem;
+      margin-bottom: 0.85rem;
       break-inside: avoid;
       cursor: pointer;
       opacity: 0;
       transition: opacity 0.5s ease, transform 0.3s ease;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.35);
+      box-shadow: 0 2px 10px rgba(0,46,9,0.1);
     }
     .photo-grid img.visible { opacity: 1; }
-    .photo-grid img:hover { opacity: 0.85; transform: scale(1.02); }
+    .photo-grid img:hover { opacity: 0.82; transform: scale(1.01); }
 
-    /* SECTION DIVIDER */
     .section-divider {
       border: none;
-      border-top: 1px solid #0a3010;
-      margin: 3rem 0;
+      border-top: 1px solid var(--border);
+      margin: 3.5rem 0;
     }
 
     /* BOOK */
-    #book iframe {
-      margin-top: 1rem;
-    }
+    #book iframe { margin-top: 1rem; }
 
-    /* LIGHTBOX */
+    /* ── LIGHTBOX ─────────────────────────────────── */
     #lightbox {
       display: none;
       position: fixed;
@@ -356,99 +472,96 @@
       animation: lbImgIn 0.25s ease forwards;
     }
     #lightbox img {
-      max-width: 80vw;
+      max-width: 82vw;
       max-height: 88vh;
       object-fit: contain;
-      box-shadow: 0 8px 40px rgba(0,0,0,0.8);
+      box-shadow: 0 8px 40px rgba(0,0,0,0.7);
     }
     #lightbox-close {
       position: fixed;
-      top: 1.2rem;
-      right: 1.5rem;
-      background: none;
-      border: none;
-      color: #a8c8a8;
+      top: 1.2rem; right: 1.5rem;
+      background: none; border: none;
+      color: rgba(214,232,214,0.55);
       font-size: 2rem;
       cursor: pointer;
-      line-height: 1;
-      font-family: sans-serif;
-      transition: color 0.2s;
       z-index: 1001;
+      font-family: sans-serif;
+      line-height: 1;
+      transition: color 0.2s;
     }
-    #lightbox-close:hover { color: #e8f5e8; }
+    #lightbox-close:hover { color: #d6e8d6; }
     .lb-arrow {
       position: fixed;
       top: 50%;
       transform: translateY(-50%);
-      background: none;
-      border: none;
-      color: #a8c8a8;
+      background: none; border: none;
+      color: rgba(214,232,214,0.4);
       font-size: 2.5rem;
       cursor: pointer;
       padding: 1rem;
       font-family: sans-serif;
-      transition: color 0.2s;
       z-index: 1001;
       line-height: 1;
+      transition: color 0.2s;
       user-select: none;
     }
-    .lb-arrow:hover { color: #e8f5e8; }
-    #lb-prev { left: 1rem; }
+    .lb-arrow:hover { color: #d6e8d6; }
+    #lb-prev { left: 0.5rem; }
     #lb-next { right: 4rem; }
 
-    /* FOOTER */
+    /* ── FOOTER ───────────────────────────────────── */
     footer {
-      background: #001a05;
-      border-top: 1px solid #0a3010;
-      padding: 1.8rem 2rem;
+      background: var(--dark-green);
+      border-top: 1px solid var(--border-dark);
+      padding: 1.8rem 3rem;
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 2rem;
+      justify-content: space-between;
     }
+    .footer-copy {
+      font-size: 0.8rem;
+      color: rgba(168,200,168,0.3);
+      letter-spacing: 0.05em;
+    }
+    .footer-links { display: flex; gap: 2rem; }
     footer a {
-      color: #a8c8a8;
+      color: rgba(168,200,168,0.5);
       display: flex;
       align-items: center;
       gap: 0.5rem;
       text-decoration: none;
-      font-size: 0.95rem;
+      font-size: 0.85rem;
       transition: color 0.2s;
     }
-    footer a:hover { color: #e8f5e8; }
-    footer svg {
-      width: 20px;
-      height: 20px;
-      fill: currentColor;
-      flex-shrink: 0;
-    }
+    footer a:hover { color: #d6e8d6; }
+    footer svg { width: 18px; height: 18px; fill: currentColor; flex-shrink: 0; }
 
-    /* MOBILE */
+    /* ── MOBILE ───────────────────────────────────── */
     @media (max-width: 768px) {
-      .page, .project-page {
-        padding: 40px 1.5rem;
-      }
-      #home h1 { font-size: 2.2rem; }
+      nav { padding: 0.85rem 1.2rem; }
+      nav ul { gap: 0.2rem; }
+      #home { padding: 4rem 1.5rem; }
+      #home h1 { font-size: 2.3rem; }
       #home img { width: 85%; }
-      nav { padding: 0.75rem 1rem; justify-content: center; }
+      .page, .project-page { padding: 3rem 1.5rem; }
+      .work-inner { padding: 3rem 1.5rem; }
       .about-container { flex-direction: column; gap: 2.5rem; }
-      .about-images { width: 100%; }
-      .about-strip img { height: 150px; }
-      .cards { flex-wrap: wrap; flex-direction: column; }
-      .card { min-height: unset; padding: 2rem 1.5rem; }
+      .about-strip { grid-template-columns: repeat(3, 1fr); gap: 0.5rem; }
+      .about-strip img { aspect-ratio: 1/1; }
+      .work-item { grid-template-columns: 2.5rem 1fr auto; gap: 1rem; }
+      .work-item:hover { padding: 2.2rem 0; margin: 0; }
       .work-images { flex-direction: column; }
       .work-images img { width: 100%; flex: unset; }
       .film-entry { flex-direction: column; gap: 2rem; }
-      .film-video { width: 100%; }
       .photo-grid { columns: 2; }
-      footer { flex-wrap: wrap; gap: 1.2rem; }
-      .page h2, .project-page h2 { font-size: 2rem; }
+      footer { flex-direction: column; gap: 1.2rem; }
     }
   </style>
 </head>
 <body>
 
   <nav>
+    <button class="nav-logo" onclick="showTab('home', document.querySelector('nav ul li:first-child button'))">Lydia Tong</button>
     <ul>
       <li><button class="active" onclick="showTab('home', this)">Home</button></li>
       <li><button onclick="showTab('work', this)">Work</button></li>
@@ -459,17 +572,25 @@
 
   <!-- HOME -->
   <section id="home">
-    <h1>Lydia Tong</h1>
-    <img src="B&W/IMG_1271.JPG" alt="Lydia Tong" />
-    <p>Film & Economics at the University of Pennsylvania</p>
+    <div class="home-title-card">
+      <div class="title-rule"></div>
+      <h1>Lydia Tong</h1>
+      <div class="title-rule"></div>
+    </div>
+    <p>Film &amp; Economics at the University of Pennsylvania</p>
+    <div class="home-frame">
+      <img src="B&W/IMG_1271.JPG" alt="Lydia Tong" />
+    </div>
+    <span class="home-sub">Director &nbsp;·&nbsp; Editor &nbsp;·&nbsp; Producer</span>
   </section>
 
   <!-- ABOUT -->
   <section id="about" class="page">
-    <h2>About</h2>
+    <span class="slug" data-animate>Int. About — Present Day</span>
+    <h2 data-animate>About</h2>
     <div class="about-container">
       <div class="about-text" data-animate>
-        <p>I'm a student originally from Bellaire, TX, at the University of Pennsylvania studying Economics and Cinema & Media Studies.</p>
+        <p>I'm a student originally from Bellaire, TX, at the University of Pennsylvania studying Economics and Cinema &amp; Media Studies.</p>
         <p>I'm a Sports Video Production intern at The Philadelphia Inquirer, assisting in their video strategy expansion for Philly's professional sports teams.</p>
         <p>In my free time, I enjoy backpacking (most recently, the South Rim of the Grand Canyon), intuitive cooking, DJing, and reading film scripts.</p>
       </div>
@@ -487,19 +608,40 @@
 
   <!-- WORK -->
   <section id="work" class="page">
-    <h2>Work</h2>
-    <div class="cards">
-      <div class="card" data-animate onclick="showProject('project-inquirer')">
-        <h3>The Philadelphia Inquirer</h3>
-        <p>Eagles, Sixers, Phillies, Union, Flyers, College, High School</p>
+    <div class="work-inner">
+      <span class="slug" data-animate>Ext. Selected Works — Ongoing</span>
+      <h2 data-animate>Work</h2>
+      <div class="work-list">
+        <div class="work-item" data-animate onclick="showProject('project-inquirer')">
+          <span class="work-num">01</span>
+          <div class="work-info">
+            <h3>The Philadelphia Inquirer</h3>
+            <p>Eagles &nbsp;·&nbsp; Sixers &nbsp;·&nbsp; Phillies &nbsp;·&nbsp; Union &nbsp;·&nbsp; Flyers &nbsp;·&nbsp; College &nbsp;·&nbsp; High School</p>
+          </div>
+          <span class="work-arrow">→</span>
+        </div>
+        <div class="work-item" data-animate onclick="showProject('project-dp')">
+          <span class="work-num">02</span>
+          <div class="work-info">
+            <h3>The Daily Pennsylvanian</h3>
+            <p>Super Bowl LIX &nbsp;·&nbsp; Penn Relays &nbsp;·&nbsp; Athletics Coverage &nbsp;·&nbsp; ACP Award Winner</p>
+          </div>
+          <span class="work-arrow">→</span>
+        </div>
+        <div class="work-item" data-animate onclick="showProject('project-freelance')">
+          <span class="work-num">03</span>
+          <div class="work-info">
+            <h3>Passion + Freelance</h3>
+            <p>Short Films &nbsp;·&nbsp; Scripts &nbsp;·&nbsp; Photoshoots</p>
+          </div>
+          <span class="work-arrow">→</span>
+        </div>
       </div>
-      <div class="card" data-animate onclick="showProject('project-dp')">
-        <h3>The Daily Pennsylvanian</h3>
-        <p>Super Bowl LIX, Penn Relays, Athletics Coverage</p>
-      </div>
-      <div class="card" data-animate onclick="showProject('project-freelance')">
-        <h3>Passion + Freelance</h3>
-        <p>Short Films, Scripts, Photoshoots</p>
+
+      <div class="work-images" data-animate>
+        <img src="DP/dp1.jpg" alt="Work preview" />
+        <img src="DP/dp4.jpg" alt="Work preview" />
+        <img src="Freelance/LYD02817.JPG" alt="Work preview" />
       </div>
     </div>
   </section>
@@ -507,6 +649,7 @@
   <!-- PROJECT: Philadelphia Inquirer -->
   <section id="project-inquirer" class="project-page">
     <button class="back-btn" onclick="showTab('work', document.querySelector('nav ul li:nth-child(2) button'))">← Back to Work</button>
+    <span class="slug" data-animate>Int. The Philadelphia Inquirer — Sports Desk</span>
     <h2 data-animate>The Philadelphia Inquirer</h2>
     <p data-animate>Current Sports Video Production Intern at the Sports Desk at The Philadelphia Inquirer, assisting in video strategy expansion for the Eagles, Sixers, Phillies, Union, Flyers, College, and High School teams.</p>
 
@@ -517,10 +660,7 @@
         <p>Coming soon.</p>
       </div>
       <div class="film-video">
-        <!-- TODO: replace YOUTUBE_EMBED_ID_1 with the actual YouTube video ID after uploading -->
-        <div class="video-placeholder">
-          <p>YouTube embed coming soon</p>
-        </div>
+        <div class="video-placeholder"><p>YouTube embed coming soon</p></div>
       </div>
     </div>
 
@@ -531,10 +671,7 @@
         <p>Coming soon.</p>
       </div>
       <div class="film-video">
-        <!-- TODO: replace YOUTUBE_EMBED_ID_2 with the actual YouTube video ID after uploading -->
-        <div class="video-placeholder">
-          <p>YouTube embed coming soon</p>
-        </div>
+        <div class="video-placeholder"><p>YouTube embed coming soon</p></div>
       </div>
     </div>
 
@@ -545,10 +682,7 @@
         <p>Coming soon.</p>
       </div>
       <div class="film-video">
-        <!-- TODO: replace YOUTUBE_EMBED_ID_3 with the actual YouTube video ID after uploading -->
-        <div class="video-placeholder">
-          <p>YouTube embed coming soon</p>
-        </div>
+        <div class="video-placeholder"><p>YouTube embed coming soon</p></div>
       </div>
     </div>
   </section>
@@ -556,6 +690,7 @@
   <!-- PROJECT: Daily Pennsylvanian -->
   <section id="project-dp" class="project-page">
     <button class="back-btn" onclick="showTab('work', document.querySelector('nav ul li:nth-child(2) button'))">← Back to Work</button>
+    <span class="slug" data-animate>Int. The Daily Pennsylvanian — Newsroom</span>
     <h2 data-animate>The Daily Pennsylvanian</h2>
     <p data-animate>Previous Sports Media Editor at The Daily Pennsylvanian. Notable coverage features Super Bowl LIX, Penn Relays, and every Penn Athletics game during season.</p>
     <p data-animate>Associated College Press Multimedia Story of The Year Winner, 1st and 2nd Place</p>
@@ -579,6 +714,7 @@
   <!-- PROJECT: Passion + Freelance -->
   <section id="project-freelance" class="project-page">
     <button class="back-btn" onclick="showTab('work', document.querySelector('nav ul li:nth-child(2) button'))">← Back to Work</button>
+    <span class="slug" data-animate>Int. Independent Work — Various Locations</span>
     <h2 data-animate>Passion + Freelance</h2>
 
     <div class="film-entry" data-animate>
@@ -595,7 +731,6 @@
     </div>
 
     <hr class="section-divider" />
-
     <h3 data-animate>Photography</h3>
 
     <div class="photo-grid">
@@ -628,11 +763,11 @@
 
   <!-- BOOK -->
   <section id="book" class="page">
-    <h2>Book</h2>
-    <p>As serious as you want it to be.</p>
+    <span class="slug" data-animate>Int. Contact — Now</span>
+    <h2 data-animate>Book</h2>
+    <p data-animate style="color: var(--muted); margin-bottom: 1.5rem;">As serious as you want it to be.</p>
     <iframe src="https://docs.google.com/forms/d/e/1FAIpQLScH3t5Ww47sKxIXhFd9A7cqUUgE2bRlHg8PZBQwOnEd0l2Huw/viewform?embedded=true"
-    width="100%" height="600" frameborder="0">
-    </iframe>
+    width="100%" height="600" frameborder="0"></iframe>
   </section>
 
   <!-- LIGHTBOX -->
@@ -645,31 +780,25 @@
 
   <!-- FOOTER -->
   <footer>
-    <a href="https://www.linkedin.com/in/lydiatong" target="_blank" rel="noopener">
-      <!-- LinkedIn icon -->
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-      </svg>
-      LinkedIn
-    </a>
-    <a href="https://www.instagram.com/lydiatongmedia" target="_blank" rel="noopener">
-      <!-- Instagram icon -->
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/>
-      </svg>
-      Instagram
-    </a>
-    <a href="https://letterboxd.com/lydtong" target="_blank" rel="noopener">
-      <!-- Letterboxd icon -->
-      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <path d="M8.235 9.166a2.835 2.835 0 1 0 0 5.669 2.835 2.835 0 0 0 0-5.669zm7.529 0a2.835 2.835 0 1 0 0 5.669 2.835 2.835 0 0 0 0-5.669zM0 12C0 5.373 5.373 0 12 0s12 5.373 12 12-5.373 12-12 12S0 18.627 0 12zm8.235-4.669a4.669 4.669 0 0 0-2.424 8.684 4.669 4.669 0 0 0 7.283-2.18 4.669 4.669 0 0 0 7.287 2.165A4.669 4.669 0 0 0 15.764 7.34a4.669 4.669 0 0 0-3.764 1.908 4.669 4.669 0 0 0-3.765-1.917z"/>
-      </svg>
-      Letterboxd
-    </a>
+    <span class="footer-copy">© Lydia Tong</span>
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/in/lydiatong" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://www.instagram.com/lydiatongmedia" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+        Instagram
+      </a>
+      <a href="https://letterboxd.com/lydtong" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24"><path d="M8.235 9.166a2.835 2.835 0 1 0 0 5.669 2.835 2.835 0 0 0 0-5.669zm7.529 0a2.835 2.835 0 1 0 0 5.669 2.835 2.835 0 0 0 0-5.669zM0 12C0 5.373 5.373 0 12 0s12 5.373 12 12-5.373 12-12 12S0 18.627 0 12zm8.235-4.669a4.669 4.669 0 0 0-2.424 8.684 4.669 4.669 0 0 0 7.283-2.18 4.669 4.669 0 0 0 7.287 2.165A4.669 4.669 0 0 0 15.764 7.34a4.669 4.669 0 0 0-3.764 1.908 4.669 4.669 0 0 0-3.765-1.917z"/></svg>
+        Letterboxd
+      </a>
+    </div>
   </footer>
 
   <script>
-    /* ---- TAB NAVIGATION ---- */
+    /* ── TAB NAVIGATION ─────────────────────────── */
     function showTab(id, btn) {
       document.getElementById('home').style.display = 'none';
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -678,12 +807,8 @@
 
       if (id === 'home') {
         document.getElementById('home').style.display = 'flex';
-        const els = [
-          document.querySelector('#home h1'),
-          document.querySelector('#home p'),
-          document.querySelector('#home img')
-        ];
-        els.forEach(el => {
+        ['#home h1', '#home p', '#home .home-sub', '#home .home-frame'].forEach(sel => {
+          const el = document.querySelector(sel);
           if (!el) return;
           el.style.animation = 'none';
           el.offsetHeight;
@@ -708,29 +833,22 @@
       window.scrollTo(0, 0);
     }
 
-    /* ---- LIGHTBOX ---- */
-    let currentGallery = [];
-    let currentIndex = 0;
+    /* ── LIGHTBOX ───────────────────────────────── */
+    let currentGallery = [], currentIndex = 0;
 
     function openLightbox(imgEl) {
-      // Collect sibling images from the same gallery container
       const container = imgEl.closest('.photo-grid, .about-strip');
       if (container) {
         currentGallery = Array.from(container.querySelectorAll('img'));
         currentIndex = currentGallery.indexOf(imgEl);
       } else {
-        currentGallery = [imgEl];
-        currentIndex = 0;
+        currentGallery = [imgEl]; currentIndex = 0;
       }
-
-      const hasSiblings = currentGallery.length > 1;
-      document.getElementById('lb-prev').style.display = hasSiblings ? '' : 'none';
-      document.getElementById('lb-next').style.display = hasSiblings ? '' : 'none';
-
-      const lb = document.getElementById('lightbox');
-      const lbImg = document.getElementById('lightbox-img');
-      lbImg.src = imgEl.src;
-      lb.classList.add('open');
+      const multi = currentGallery.length > 1;
+      document.getElementById('lb-prev').style.display = multi ? '' : 'none';
+      document.getElementById('lb-next').style.display = multi ? '' : 'none';
+      document.getElementById('lightbox-img').src = imgEl.src;
+      document.getElementById('lightbox').classList.add('open');
       document.body.style.overflow = 'hidden';
     }
 
@@ -738,9 +856,7 @@
       if (!currentGallery.length) return;
       currentIndex = (currentIndex + dir + currentGallery.length) % currentGallery.length;
       const lbImg = document.getElementById('lightbox-img');
-      lbImg.style.animation = 'none';
-      lbImg.offsetHeight;
-      lbImg.style.animation = '';
+      lbImg.style.animation = 'none'; lbImg.offsetHeight; lbImg.style.animation = '';
       lbImg.src = currentGallery[currentIndex].src;
     }
 
@@ -756,21 +872,18 @@
     }
 
     document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'Escape')     closeLightbox();
       if (e.key === 'ArrowLeft')  shiftLightbox(-1);
       if (e.key === 'ArrowRight') shiftLightbox(1);
     });
 
-    /* ---- SCROLL ANIMATIONS ---- */
+    /* ── SCROLL ANIMATIONS ──────────────────────── */
     const animObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
-    }, { threshold: 0.12 });
+    }, { threshold: 0.1 });
 
-    // Staggered image reveal for photo grids
     const gridObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
