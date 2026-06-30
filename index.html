@@ -81,48 +81,52 @@
       animation: pageIn 0.35s ease forwards;
     }
 
-    /* ── NAV ──────────────────────────────────────── */
-    nav {
-      background: var(--white);
-      border-bottom: 1px solid var(--border);
-      padding: 1.1rem 3rem;
+    /* ── HOME NAV BUTTONS ─────────────────────────── */
+    .home-nav {
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      flex-direction: column;
+      align-items: flex-end;
+      margin-top: 1.2rem;
+      gap: 0.05rem;
     }
-    .nav-logo {
+    .home-nav button {
+      background: none;
+      border: none;
       font-family: 'Libre Caslon Display', serif;
-      font-size: 0.95rem;
+      font-size: clamp(1.4rem, 2vw, 2rem);
       color: var(--dark-green);
-      background: none;
-      border: none;
       cursor: pointer;
-      letter-spacing: 0.02em;
+      padding: 0.08rem 0;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      transition: opacity 0.2s;
+      text-align: right;
     }
-    nav ul { list-style: none; display: flex; gap: 0.5rem; }
-    nav ul li button {
-      background: none;
-      border: none;
+    .home-nav button:hover { opacity: 0.45; }
+
+    /* ── RETURN HOME BUTTON ───────────────────────── */
+    .return-home {
+      display: inline-block;
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
       color: var(--muted);
-      font-size: 0.9rem;
-      padding: 0.45rem 1.1rem;
-      border-radius: 20px;
+      background: none;
+      border: none;
       cursor: pointer;
-      transition: all 0.2s;
-      font-family: 'Libre Caslon Display', serif;
+      padding: 0;
+      margin-bottom: 2.8rem;
+      transition: color 0.2s;
     }
-    nav ul li button:hover  { color: var(--dark-green); background: rgba(0,46,9,0.06); }
-    nav ul li button.active { color: var(--dark-green); background: rgba(0,46,9,0.1); }
+    .return-home:hover { color: var(--dark-green); }
 
     /* ── HOME ─────────────────────────────────────── */
     #home {
       background: var(--white);
       display: flex;
       flex-direction: column;
-      min-height: calc(100vh - 57px);
+      min-height: 100vh;
       padding: 2.5rem 4rem 2.5rem;
       overflow: hidden; /* clips the name during swipe-in */
     }
@@ -545,9 +549,6 @@
 
     /* ── MOBILE ───────────────────────────────────── */
     @media (max-width: 768px) {
-      nav { padding: 0.85rem 1.2rem; }
-      nav ul { gap: 0.2rem; }
-
       #home { padding: 1.8rem 1.5rem 1.8rem; }
       .line-wrap { font-size: clamp(4rem, 18vw, 7rem); }
       .home-frame { width: clamp(90px, 25vw, 130px); }
@@ -567,21 +568,18 @@
 </head>
 <body>
 
-  <nav>
-    <button class="nav-logo" onclick="showTab('home', document.querySelector('nav ul li:first-child button'))">Lydia Tong</button>
-    <ul>
-      <li><button class="active" onclick="showTab('home', this)">Home</button></li>
-      <li><button onclick="showTab('work', this)">Work</button></li>
-      <li><button onclick="showTab('about', this)">About</button></li>
-      <li><button onclick="showTab('book', this)">Book</button></li>
-    </ul>
-  </nav>
-
   <!-- HOME -->
   <section id="home">
     <div class="hero-top">
-      <div class="home-frame">
-        <img src="B&W/IMG_1271.JPG" alt="Lydia Tong" />
+      <div>
+        <div class="home-frame">
+          <img src="B&W/IMG_1271.JPG" alt="Lydia Tong" />
+        </div>
+        <nav class="home-nav">
+          <button onclick="showTab('work')">Work</button>
+          <button onclick="showTab('about')">About</button>
+          <button onclick="showTab('book')">Book</button>
+        </nav>
       </div>
     </div>
     <h1 class="hero-name">
@@ -595,6 +593,7 @@
 
   <!-- ABOUT -->
   <section id="about" class="page">
+    <button class="return-home" onclick="showTab('home')">← Home</button>
     <span class="slug" data-animate>Int. About — Present Day</span>
     <h2 data-animate>About</h2>
     <div class="about-container">
@@ -618,6 +617,7 @@
   <!-- WORK -->
   <section id="work" class="page">
     <div class="work-inner">
+      <button class="return-home" onclick="showTab('home')">← Home</button>
       <span class="slug" data-animate>Ext. Selected Works — Ongoing</span>
       <h2 data-animate>Work</h2>
       <div class="work-list">
@@ -652,7 +652,8 @@
 
   <!-- PROJECT: Philadelphia Inquirer -->
   <section id="project-inquirer" class="project-page">
-    <button class="back-btn" onclick="showTab('work', document.querySelector('nav ul li:nth-child(2) button'))">← Back to Work</button>
+    <button class="return-home" onclick="showTab('home')">← Home</button>
+    <button class="back-btn" onclick="showTab('work')">← Back to Work</button>
     <span class="slug" data-animate>Int. The Philadelphia Inquirer — Sports Desk</span>
     <h2 data-animate>The Philadelphia Inquirer</h2>
     <p data-animate>Former Sports Video Production Intern at the Sports Desk at The Philadelphia Inquirer, assisted in video strategy expansion for the Eagles, Sixers, Phillies, Union, Flyers, College, and High School teams.</p>
@@ -693,7 +694,8 @@
 
   <!-- PROJECT: Daily Pennsylvanian -->
   <section id="project-dp" class="project-page">
-    <button class="back-btn" onclick="showTab('work', document.querySelector('nav ul li:nth-child(2) button'))">← Back to Work</button>
+    <button class="return-home" onclick="showTab('home')">← Home</button>
+    <button class="back-btn" onclick="showTab('work')">← Back to Work</button>
     <span class="slug" data-animate>Int. The Daily Pennsylvanian — Newsroom</span>
     <h2 data-animate>The Daily Pennsylvanian</h2>
     <p data-animate>Previous Sports Media Editor at The Daily Pennsylvanian. Notable coverage features Super Bowl LIX, Penn Relays, and every Penn Athletics game during season.</p>
@@ -717,7 +719,8 @@
 
   <!-- PROJECT: Projects + Freelance -->
   <section id="project-freelance" class="project-page">
-    <button class="back-btn" onclick="showTab('work', document.querySelector('nav ul li:nth-child(2) button'))">← Back to Work</button>
+    <button class="return-home" onclick="showTab('home')">← Home</button>
+    <button class="back-btn" onclick="showTab('work')">← Back to Work</button>
     <span class="slug" data-animate>Int. Independent Work — Various Locations</span>
     <h2 data-animate>Projects + Freelance</h2>
 
@@ -767,6 +770,7 @@
 
   <!-- BOOK -->
   <section id="book" class="page">
+    <button class="return-home" onclick="showTab('home')">← Home</button>
     <span class="slug" data-animate>Int. Contact — Now</span>
     <h2 data-animate>Book</h2>
     <p data-animate style="color: var(--muted); margin-bottom: 1.5rem;">As serious as you want it to be.</p>
@@ -807,11 +811,10 @@
 
   <script>
     /* ── TAB NAVIGATION ─────────────────────────── */
-    function showTab(id, btn) {
+    function showTab(id) {
       document.getElementById('home').style.display = 'none';
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       document.querySelectorAll('.project-page').forEach(p => p.classList.remove('active'));
-      document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
 
       if (id === 'home') {
         document.getElementById('home').style.display = 'flex';
@@ -826,7 +829,6 @@
         document.getElementById(id).classList.add('active');
       }
 
-      if (btn) btn.classList.add('active');
       window.scrollTo(0, 0);
     }
 
@@ -834,10 +836,8 @@
       document.getElementById('home').style.display = 'none';
       document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
       document.querySelectorAll('.project-page').forEach(p => p.classList.remove('active'));
-      document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
 
       document.getElementById(id).classList.add('active');
-      document.querySelector('nav ul li:nth-child(2) button').classList.add('active');
       window.scrollTo(0, 0);
     }
 
