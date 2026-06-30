@@ -70,16 +70,11 @@
       from { opacity: 0; transform: scale(0.94); }
       to   { opacity: 1; transform: scale(1); }
     }
-    @keyframes marqueeScroll {
-      from { transform: translateX(0); }
-      to   { transform: translateX(-50%); }
-    }
 
-    .hero-line-1   { animation: slideInLeft  0.9s cubic-bezier(0.16,1,0.3,1) 0.1s both; }
-    .hero-line-2   { animation: slideInRight 0.9s cubic-bezier(0.16,1,0.3,1) 0.25s both; }
-    #home p        { animation: fadeUp 0.7s ease 0.55s both; }
-    #home .home-frame { animation: fadeIn 0.9s ease 0.65s both; }
-    .marquee-strip { animation: fadeIn 0.7s ease 1s both; }
+    .hero-line-1      { animation: slideInLeft  0.9s cubic-bezier(0.16,1,0.3,1) 0.1s both; }
+    .hero-line-2      { animation: slideInRight 0.9s cubic-bezier(0.16,1,0.3,1) 0.25s both; }
+    .hero-sub         { animation: fadeUp 0.7s ease 0.3s both; }
+    #home .home-frame { animation: fadeIn 0.9s ease 0.45s both; }
 
     [data-animate] {
       opacity: 0;
@@ -130,101 +125,63 @@
 
     /* ── HOME ─────────────────────────────────────── */
     #home {
-      flex: 1;
       background: var(--white);
-      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      min-height: calc(100vh - 57px);
+      overflow: hidden;
+      padding: 0;
+    }
+
+    /* Upper area: subheader + square photo, centered */
+    .hero-center {
+      flex: 1;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      text-align: center;
-      padding: 4rem 2rem 0;
-      overflow: hidden;
+      padding: 3rem 2rem 1.5rem;
+      gap: 1.4rem;
     }
 
-    /* Big split name */
-    .hero-name {
-      line-height: 0.88;
-      margin-bottom: 1.5rem;
+    .hero-sub {
+      font-family: 'Libre Caslon Display', serif;
+      font-size: clamp(0.85rem, 1.4vw, 1.1rem);
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      text-align: center;
+    }
+
+    /* Square photo */
+    .home-frame {
+      width: 300px;
+      max-width: 72vw;
+      aspect-ratio: 1 / 1;
       overflow: hidden;
+      display: block;
+      box-shadow: 0 6px 32px rgba(0,46,9,0.15);
+    }
+    .home-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 15%;
+      display: block;
+    }
+
+    /* Big name bottom-left */
+    .hero-name {
+      padding: 1.5rem 4rem 2.5rem;
+      align-self: flex-start;
+      line-height: 1;
     }
     .hero-line-1,
     .hero-line-2 {
       display: block;
-      font-size: clamp(5rem, 18vw, 16rem);
+      font-size: clamp(4.5rem, 14vw, 13rem);
       color: var(--dark-green);
       letter-spacing: -0.03em;
-      line-height: 0.9;
-    }
-    .hero-line-2 {
-      /* offset right to give dynamic feel */
-      margin-left: 0.15em;
-    }
-
-    #home p {
-      color: var(--muted);
-      font-size: 1rem;
-      margin-bottom: 2.5rem;
-      font-family: 'Courier Prime', monospace;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      font-size: 0.75rem;
-    }
-
-    /* Cinematic photo frame */
-    .home-frame {
-      position: relative;
-      display: inline-block;
-      align-self: center;
-      width: 380px;
-      max-width: 88vw;
-    }
-    .home-frame img {
-      width: 100%;
-      height: auto;
-      display: block;
-      box-shadow: 0 6px 32px rgba(0,46,9,0.18);
-    }
-    /* Letterbox bars */
-    .home-frame::before,
-    .home-frame::after {
-      content: '';
-      position: absolute;
-      left: 0; right: 0;
-      height: 10px;
-      background: var(--white);
-      z-index: 2;
-    }
-    .home-frame::before { top: 0; }
-    .home-frame::after  { bottom: 0; }
-
-    /* Marquee ticker */
-    .marquee-strip {
-      width: 100%;
-      overflow: hidden;
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
-      padding: 0.85rem 0;
-      margin-top: 3rem;
-    }
-    .marquee-track {
-      display: flex;
-      width: max-content;
-      animation: marqueeScroll 22s linear infinite;
-    }
-    .marquee-strip:hover .marquee-track { animation-play-state: paused; }
-    .marquee-item {
-      font-family: 'Courier Prime', monospace;
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--muted);
-      white-space: nowrap;
-      padding: 0 2.5rem;
-    }
-    .marquee-dot {
-      color: var(--dark-green);
-      opacity: 0.4;
+      line-height: 0.88;
     }
 
     /* ── PAGES ────────────────────────────────────── */
@@ -623,39 +580,16 @@
 
   <!-- HOME -->
   <section id="home">
+    <div class="hero-center">
+      <p class="hero-sub">Film &amp; Economics &nbsp;·&nbsp; University of Pennsylvania</p>
+      <div class="home-frame">
+        <img src="B&W/IMG_1271.JPG" alt="Lydia Tong" />
+      </div>
+    </div>
     <h1 class="hero-name">
       <span class="hero-line-1">Lydia</span>
       <span class="hero-line-2">Tong</span>
     </h1>
-    <p>Film &amp; Economics &nbsp;·&nbsp; University of Pennsylvania</p>
-    <div class="home-frame">
-      <img src="B&W/IMG_1271.JPG" alt="Lydia Tong" />
-    </div>
-    <div class="marquee-strip">
-      <div class="marquee-track">
-        <span class="marquee-item">Director <span class="marquee-dot">·</span></span>
-        <span class="marquee-item">Editor <span class="marquee-dot">·</span></span>
-        <span class="marquee-item">Producer <span class="marquee-dot">·</span></span>
-        <span class="marquee-item">Film Student <span class="marquee-dot">·</span></span>
-        <span class="marquee-item">University of Pennsylvania <span class="marquee-dot">·</span></span>
-        <span class="marquee-item">Sports Media <span class="marquee-dot">·</span></span>
-        <span class="marquee-item">San Francisco <span class="marquee-dot">·</span></span>
-        <span class="marquee-item">Philadelphia <span class="marquee-dot">·</span></span>
-        <span class="marquee-item">Economics <span class="marquee-dot">·</span></span>
-        <span class="marquee-item">Cinema &amp; Media Studies <span class="marquee-dot">·</span></span>
-        <!-- duplicate for seamless loop -->
-        <span class="marquee-item">Director <span class="marquee-dot">·</span></span>
-        <span class="marquee-item">Editor <span class="marquee-dot">·</span></span>
-        <span class="marquee-item">Producer <span class="marquee-dot">·</span></span>
-        <span class="marquee-item">Film Student <span class="marquee-dot">·</span></span>
-        <span class="marquee-item">University of Pennsylvania <span class="marquee-dot">·</span></span>
-        <span class="marquee-item">Sports Media <span class="marquee-dot">·</span></span>
-        <span class="marquee-item">San Francisco <span class="marquee-dot">·</span></span>
-        <span class="marquee-item">Philadelphia <span class="marquee-dot">·</span></span>
-        <span class="marquee-item">Economics <span class="marquee-dot">·</span></span>
-        <span class="marquee-item">Cinema &amp; Media Studies <span class="marquee-dot">·</span></span>
-      </div>
-    </div>
   </section>
 
   <!-- ABOUT -->
@@ -880,7 +814,7 @@
 
       if (id === 'home') {
         document.getElementById('home').style.display = 'flex';
-        ['.hero-line-1', '.hero-line-2', '#home p', '#home .home-frame', '.marquee-strip'].forEach(sel => {
+        ['.hero-line-1', '.hero-line-2', '.hero-sub', '#home .home-frame'].forEach(sel => {
           const el = document.querySelector(sel);
           if (!el) return;
           el.style.animation = 'none';
