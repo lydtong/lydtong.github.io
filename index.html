@@ -162,15 +162,19 @@
       margin-bottom: 0.6rem;
     }
 
-    /* Clip-reveal wrappers — padding-bottom prevents descender ('y') cutoff */
+    /* Clip-reveal wrappers.
+       Font-size lives HERE so em units resolve correctly for padding. */
     .line-wrap {
       overflow: hidden;
+      font-size: clamp(4.8rem, 17vw, 17rem);
+      line-height: 0.9;
+      /* padding-bottom in em now = 0.18 × hero font-size (not 16px) */
       padding-bottom: 0.18em;
+      margin-bottom: -0.18em; /* cancel visual gap between lines */
     }
     .hero-line-1,
     .hero-line-2 {
       display: block;
-      font-size: clamp(4.8rem, 17vw, 17rem);
       color: var(--dark-green);
       letter-spacing: -0.04em;
       line-height: 0.9;
