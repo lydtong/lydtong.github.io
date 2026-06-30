@@ -128,54 +128,52 @@
       flex-direction: column;
       justify-content: space-between;
       min-height: calc(100vh - 57px);
-      padding: 2.5rem 4rem 2rem;
+      padding: 2.5rem 4rem 2.5rem;
       overflow: hidden;
     }
 
-    /* Top row: sub left, photo right */
+    /* Photo alone, top-right */
     .hero-top {
       display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
+      justify-content: flex-end;
     }
 
-    .hero-sub {
-      font-family: 'Libre Caslon Display', serif;
-      font-size: clamp(0.8rem, 1vw, 1rem);
-      color: var(--muted);
-      letter-spacing: 0.05em;
-      padding-top: 0.2rem;
-    }
-
-    /* Square photo top-right */
     .home-frame {
-      width: clamp(160px, 22vw, 280px);
+      width: clamp(130px, 17vw, 230px);
       aspect-ratio: 1 / 1;
       overflow: hidden;
       flex-shrink: 0;
-      box-shadow: 0 8px 40px rgba(0,46,9,0.18);
+      box-shadow: 0 8px 40px rgba(0,46,9,0.16);
     }
     .home-frame img {
-      width: 100%;
-      height: 100%;
+      width: 100%; height: 100%;
       object-fit: cover;
       object-position: center 15%;
       display: block;
     }
 
-    /* Name at the bottom — clips so lines reveal upward */
-    .hero-name { line-height: 1; }
+    /* Subheader + name, anchored to bottom */
+    .hero-bottom {}
+    .hero-sub {
+      font-family: 'Libre Caslon Display', serif;
+      font-size: clamp(0.78rem, 0.95vw, 0.95rem);
+      color: var(--muted);
+      letter-spacing: 0.06em;
+      margin-bottom: 0.6rem;
+    }
+
+    /* Clip-reveal wrappers — padding-bottom prevents descender ('y') cutoff */
     .line-wrap {
       overflow: hidden;
-      line-height: 0.87;
+      padding-bottom: 0.18em;
     }
     .hero-line-1,
     .hero-line-2 {
       display: block;
-      font-size: clamp(5.5rem, 21vw, 21rem);
+      font-size: clamp(4.8rem, 17vw, 17rem);
       color: var(--dark-green);
       letter-spacing: -0.04em;
-      line-height: 0.87;
+      line-height: 0.9;
     }
     .hero-line-2 { padding-left: 0.14em; }
 
@@ -544,10 +542,10 @@
       nav { padding: 0.85rem 1.2rem; }
       nav ul { gap: 0.2rem; }
 
-      #home { padding: 1.8rem 1.5rem 1.5rem; }
+      #home { padding: 1.8rem 1.5rem 1.8rem; }
       .hero-line-1,
-      .hero-line-2 { font-size: clamp(4.5rem, 21vw, 8rem); }
-      .home-frame { width: clamp(100px, 28vw, 160px); }
+      .hero-line-2 { font-size: clamp(4rem, 18vw, 7rem); }
+      .home-frame { width: clamp(90px, 25vw, 140px); }
 
       .page, .project-page { padding: 3rem 1.5rem; }
       .work-inner { padding: 3rem 1.5rem; }
@@ -577,15 +575,17 @@
   <!-- HOME -->
   <section id="home">
     <div class="hero-top">
-      <p class="hero-sub">Film &amp; Economics &nbsp;·&nbsp; University of Pennsylvania</p>
       <div class="home-frame">
         <img src="B&W/IMG_1271.JPG" alt="Lydia Tong" />
       </div>
     </div>
-    <h1 class="hero-name">
-      <div class="line-wrap"><span class="hero-line-1">Lydia</span></div>
-      <div class="line-wrap"><span class="hero-line-2">Tong</span></div>
-    </h1>
+    <div class="hero-bottom">
+      <p class="hero-sub">Film &amp; Economics &nbsp;·&nbsp; University of Pennsylvania</p>
+      <h1 class="hero-name">
+        <div class="line-wrap"><span class="hero-line-1">Lydia</span></div>
+        <div class="line-wrap"><span class="hero-line-2">Tong</span></div>
+      </h1>
+    </div>
   </section>
 
   <!-- ABOUT -->
