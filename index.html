@@ -44,14 +44,17 @@
     }
 
     /* ── ANIMATIONS ───────────────────────────────── */
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-80px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(80px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(20px); }
       to   { opacity: 1; transform: translateY(0); }
-    }
-    @keyframes bounce {
-      0%   { opacity: 0; transform: scale(0.92); }
-      60%  { transform: scale(1.03); }
-      100% { opacity: 1; transform: scale(1); }
     }
     @keyframes fadeIn {
       from { opacity: 0; } to { opacity: 1; }
@@ -67,11 +70,16 @@
       from { opacity: 0; transform: scale(0.94); }
       to   { opacity: 1; transform: scale(1); }
     }
+    @keyframes marqueeScroll {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
 
-    #home h1         { animation: fadeUp 0.8s ease forwards; }
-    #home p          { animation: fadeUp 0.8s ease 0.3s forwards; opacity: 0; }
-    #home .home-sub  { animation: fadeUp 0.8s ease 0.45s forwards; opacity: 0; }
-    #home .home-frame{ animation: bounce 0.9s ease 0.55s forwards; opacity: 0; }
+    .hero-line-1   { animation: slideInLeft  0.9s cubic-bezier(0.16,1,0.3,1) 0.1s both; }
+    .hero-line-2   { animation: slideInRight 0.9s cubic-bezier(0.16,1,0.3,1) 0.25s both; }
+    #home p        { animation: fadeUp 0.7s ease 0.55s both; }
+    #home .home-frame { animation: fadeIn 0.9s ease 0.65s both; }
+    .marquee-strip { animation: fadeIn 0.7s ease 1s both; }
 
     [data-animate] {
       opacity: 0;
@@ -130,39 +138,52 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 5rem 2rem;
+      padding: 4rem 2rem 0;
+      overflow: hidden;
     }
-    /* Title card */
-    .home-title-card {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0;
-      margin-bottom: 0.5rem;
+
+    /* Big split name */
+    .hero-name {
+      line-height: 0.88;
+      margin-bottom: 1.5rem;
+      overflow: hidden;
     }
-    .title-rule {
-      width: 48px;
-      height: 1px;
-      background: rgba(0,46,9,0.2);
-      margin: 1rem 0;
+    .hero-line-1,
+    .hero-line-2 {
+      display: block;
+      font-size: clamp(5rem, 18vw, 16rem);
+      color: var(--dark-green);
+      letter-spacing: -0.03em;
+      line-height: 0.9;
     }
-    #home h1  { font-size: 3rem; color: var(--dark-green); margin: 0; letter-spacing: 0.04em; }
-    #home p   { color: var(--muted); font-size: 1.15rem; margin-top: 0.4rem; }
+    .hero-line-2 {
+      /* offset right to give dynamic feel */
+      margin-left: 0.15em;
+    }
+
+    #home p {
+      color: var(--muted);
+      font-size: 1rem;
+      margin-bottom: 2.5rem;
+      font-family: 'Courier Prime', monospace;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+    }
 
     /* Cinematic photo frame */
     .home-frame {
       position: relative;
-      margin: 2.5rem 0;
       display: inline-block;
       align-self: center;
-      width: 420px;
-      max-width: 90vw;
+      width: 380px;
+      max-width: 88vw;
     }
     .home-frame img {
       width: 100%;
       height: auto;
       display: block;
-      box-shadow: 0 4px 24px rgba(0,46,9,0.15);
+      box-shadow: 0 6px 32px rgba(0,46,9,0.18);
     }
     /* Letterbox bars */
     .home-frame::before,
@@ -177,6 +198,35 @@
     .home-frame::before { top: 0; }
     .home-frame::after  { bottom: 0; }
 
+    /* Marquee ticker */
+    .marquee-strip {
+      width: 100%;
+      overflow: hidden;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 0.85rem 0;
+      margin-top: 3rem;
+    }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marqueeScroll 22s linear infinite;
+    }
+    .marquee-strip:hover .marquee-track { animation-play-state: paused; }
+    .marquee-item {
+      font-family: 'Courier Prime', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      white-space: nowrap;
+      padding: 0 2.5rem;
+    }
+    .marquee-dot {
+      color: var(--dark-green);
+      opacity: 0.4;
+    }
+
     /* ── PAGES ────────────────────────────────────── */
     .page {
       display: none;
@@ -188,11 +238,11 @@
     }
     .page.active { display: block; }
     .page h2 {
-      font-size: clamp(2.2rem, 4vw, 3.5rem);
+      font-size: clamp(3.5rem, 7vw, 7rem);
       margin-bottom: 2.5rem;
       color: var(--dark-green);
-      letter-spacing: -0.02em;
-      line-height: 1;
+      letter-spacing: -0.03em;
+      line-height: 0.92;
     }
 
     /* ── ABOUT ────────────────────────────────────── */
@@ -266,7 +316,7 @@
       margin: 0 auto;
       padding: 5rem;
     }
-    #work h2 { color: var(--dark-green); }
+    #work h2 { color: var(--dark-green); font-size: clamp(3.5rem, 7vw, 7rem); letter-spacing: -0.03em; line-height: 0.92; }
 
     .work-list { border-top: 1px solid var(--border); }
 
@@ -355,11 +405,11 @@
     .back-btn:hover { color: var(--dark-green); }
 
     .project-page h2 {
-      font-size: clamp(2rem, 4vw, 3.5rem);
+      font-size: clamp(3rem, 6vw, 6rem);
       margin-bottom: 1.5rem;
       color: var(--dark-green);
-      letter-spacing: -0.02em;
-      line-height: 1;
+      letter-spacing: -0.03em;
+      line-height: 0.92;
     }
     .project-page > p {
       color: #2a3d2a;
@@ -573,14 +623,38 @@
 
   <!-- HOME -->
   <section id="home">
-    <div class="home-title-card">
-      <div class="title-rule"></div>
-      <h1>Lydia Tong</h1>
-      <div class="title-rule"></div>
-    </div>
-    <p>Film &amp; Economics at the University of Pennsylvania</p>
+    <h1 class="hero-name">
+      <span class="hero-line-1">Lydia</span>
+      <span class="hero-line-2">Tong</span>
+    </h1>
+    <p>Film &amp; Economics &nbsp;·&nbsp; University of Pennsylvania</p>
     <div class="home-frame">
       <img src="B&W/IMG_1271.JPG" alt="Lydia Tong" />
+    </div>
+    <div class="marquee-strip">
+      <div class="marquee-track">
+        <span class="marquee-item">Director <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">Editor <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">Producer <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">Film Student <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">University of Pennsylvania <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">Sports Media <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">San Francisco <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">Philadelphia <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">Economics <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">Cinema &amp; Media Studies <span class="marquee-dot">·</span></span>
+        <!-- duplicate for seamless loop -->
+        <span class="marquee-item">Director <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">Editor <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">Producer <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">Film Student <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">University of Pennsylvania <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">Sports Media <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">San Francisco <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">Philadelphia <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">Economics <span class="marquee-dot">·</span></span>
+        <span class="marquee-item">Cinema &amp; Media Studies <span class="marquee-dot">·</span></span>
+      </div>
     </div>
   </section>
 
@@ -806,7 +880,7 @@
 
       if (id === 'home') {
         document.getElementById('home').style.display = 'flex';
-        ['#home h1', '#home p', '#home .home-sub', '#home .home-frame'].forEach(sel => {
+        ['.hero-line-1', '.hero-line-2', '#home p', '#home .home-frame', '.marquee-strip'].forEach(sel => {
           const el = document.querySelector(sel);
           if (!el) return;
           el.style.animation = 'none';
