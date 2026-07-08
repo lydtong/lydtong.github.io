@@ -131,6 +131,9 @@
       margin-bottom: 2.8rem;
       transition: color 0.2s;
     }
+    .project-page .return-home {
+      margin-bottom: 0.4rem;
+    }
     .return-home:hover { color: var(--dark-green); }
 
     /* ── HOME ─────────────────────────────────────── */
@@ -301,6 +304,25 @@
     }
     #work h2 { color: var(--dark-green); font-size: clamp(3.5rem, 7vw, 7rem); letter-spacing: -0.03em; line-height: 0.92; }
 
+    .currently-box {
+      margin-bottom: 2.5rem;
+    }
+    .currently-list {
+      list-style: disc;
+      padding-left: 1.4rem;
+      font-size: 1rem;
+      color: #2a3d2a;
+      line-height: 1.85;
+    }
+    .currently-list li { margin-bottom: 0.3rem; }
+    .currently-list a {
+      color: var(--dark-green);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: opacity 0.2s;
+    }
+    .currently-list a:hover { opacity: 0.65; }
+
     .work-list { border-top: 1px solid var(--border); }
 
     .work-item {
@@ -406,7 +428,7 @@
       cursor: pointer;
       padding: 0;
       margin-bottom: 2rem;
-      display: inline-block;
+      display: block;
       transition: color 0.2s;
     }
     .back-btn:hover { color: var(--dark-green); }
@@ -647,7 +669,7 @@
     <div class="about-container">
       <div class="about-text" data-animate>
         <p>I'm a film and economics student at the University of Pennsylvania, originally from Bellaire, TX.</p>
-        <p>Formerly, I worked at <a href="https://www.inquirer.com/" target="_blank" rel="noopener">The Philadelphia Inquirer</a> as a Sports Video Production Intern, where I had a ball covering Philly's professional sports teams. I'm currently in San Francisco at <a href="https://www.afterquery.com/" target="_blank" rel="noopener">AfterQuery</a> as a Strategic Projects Associate Intern.</p>
+        <p>Formerly, I worked at <a href="https://www.inquirer.com/" target="_blank" rel="noopener">The Philadelphia Inquirer</a> as a Sports Video Production Intern, where I had a ball covering Philly's professional sports teams.</p>
         <p>In my free time, I enjoy backpacking (most recently, the South Rim of the Grand Canyon), intuitive cooking, DJing, and reading film scripts.</p>
       </div>
       <div class="about-images" data-animate>
@@ -668,6 +690,16 @@
       <button class="return-home" onclick="showTab('home')">← Home</button>
       <span class="slug" data-animate>Ext. Selected Works — Ongoing</span>
       <h2 data-animate>Work</h2>
+
+      <div class="currently-box" data-animate>
+        <span class="slug" style="margin-bottom: 0.5rem;">Currently:</span>
+        <ul class="currently-list">
+          <li>Strategic Projects at <a href="https://www.afterquery.com/" target="_blank" rel="noopener">AfterQuery</a>, advancing frontier models (San Francisco)</li>
+          <li>Writing my first feature film</li>
+          <li>Hiking Mission Peak</li>
+        </ul>
+      </div>
+
       <div class="work-list">
         <div class="work-item" data-animate onclick="showProject('project-inquirer')">
           <span class="work-num">01</span>
