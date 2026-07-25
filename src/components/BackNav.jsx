@@ -1,22 +1,31 @@
 import { Link } from 'react-router-dom'
 
-export default function BackNav({ showWork = false }) {
+export default function BackNav({ showWork = false, current }) {
   return (
-    <div className="mb-8">
+    <nav className="mb-8 font-mono text-[0.72rem] tracking-[0.14em] uppercase text-muted flex items-center gap-[0.4em] flex-wrap">
       <Link
         to="/"
-        className="font-mono text-[0.72rem] tracking-[0.18em] uppercase text-muted no-underline transition-colors hover:text-dark-green block mb-1"
+        className="no-underline text-muted transition-colors hover:text-dark-green"
       >
-        ← Home
+        Home
       </Link>
       {showWork && (
-        <Link
-          to="/work"
-          className="font-serif text-[0.9rem] text-muted no-underline transition-colors hover:text-dark-green block"
-        >
-          ← Back to Work
-        </Link>
+        <>
+          <span className="text-muted/40 select-none">/</span>
+          <Link
+            to="/work"
+            className="no-underline text-muted transition-colors hover:text-dark-green"
+          >
+            Work
+          </Link>
+        </>
       )}
-    </div>
+      {current && (
+        <>
+          <span className="text-muted/40 select-none">/</span>
+          <span className="text-dark-green/50">{current}</span>
+        </>
+      )}
+    </nav>
   )
 }

@@ -10,7 +10,7 @@ export default function DailyPenn() {
   return (
     <PageTransition>
       <div className="max-w-[1200px] mx-auto px-8 md:px-12 py-16 md:py-20 w-full">
-        <BackNav showWork />
+        <BackNav showWork current="Daily Pennsylvanian" />
         <SlugLine text="Int. The Daily Pennsylvanian — Newsroom" />
         <FadeIn>
           <h2 className="text-[clamp(3rem,6vw,6rem)] text-dark-green tracking-tight leading-[0.92] mb-6">
