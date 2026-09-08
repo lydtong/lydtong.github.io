@@ -3,6 +3,29 @@ import BackNav from '../../components/BackNav'
 import SlugLine from '../../components/SlugLine'
 import FadeIn from '../../components/FadeIn'
 
+const teamStyles = {
+  Eagles: 'bg-[#004C54]/10 text-[#004C54] border-[#004C54]/20',
+  Flyers: 'bg-[#CF4520]/10 text-[#CF4520] border-[#CF4520]/20',
+  Sixers: 'bg-[#006BB6]/10 text-[#006BB6] border-[#006BB6]/20',
+  Phillies: 'bg-[#E81828]/10 text-[#E81828] border-[#E81828]/20',
+  Union: 'bg-[#69B3E7]/10 text-[#1A5B8A] border-[#69B3E7]/25',
+  'High School': 'bg-dark-green/8 text-dark-green border-dark-green/15',
+  College: 'bg-dark-green/8 text-dark-green border-dark-green/15',
+  Sports: 'bg-dark-green/8 text-dark-green border-dark-green/15',
+}
+
+function getTeam(url) {
+  const path = new URL(url).pathname
+  if (path.startsWith('/eagles')) return 'Eagles'
+  if (path.startsWith('/flyers')) return 'Flyers'
+  if (path.startsWith('/sixers')) return 'Sixers'
+  if (path.startsWith('/phillies')) return 'Phillies'
+  if (path.startsWith('/soccer')) return 'Union'
+  if (path.startsWith('/high-school')) return 'High School'
+  if (path.startsWith('/college')) return 'College'
+  return 'Sports'
+}
+
 const bylines = [
   { title: "Howie Roseman responds to 'unfair' recent reporting around Jalen Hurts", coauthor: 'Jeff Neiburg', date: 'April 14, 2026', url: 'https://www.inquirer.com/eagles/howie-roseman-responds-unfair-recent-reporting-around-jalen-hurts-20260414.html' },
   { title: 'Porter Martone takes the ice for the first time as a member of the Flyers', coauthor: 'Jackie Spiegel', date: 'April 1, 2026', url: 'https://www.inquirer.com/flyers/porter-martone-takes-ice-first-time-member-flyers-20260401.html' },
@@ -64,11 +87,16 @@ export default function Inquirer() {
                 <span className="text-dark-green text-[1.02rem] leading-snug transition-colors group-hover:text-mid-green flex-1">
                   {item.title}
                 </span>
-                {item.coauthor && (
-                  <span className="text-[0.8rem] text-muted whitespace-nowrap shrink-0">
-                    w/ {item.coauthor}
+                <span className="flex items-center gap-3 shrink-0">
+                  <span className={`text-[0.65rem] font-mono tracking-wider uppercase px-2 py-[2px] rounded-sm border ${teamStyles[getTeam(item.url)]}`}>
+                    {getTeam(item.url)}
                   </span>
-                )}
+                  {item.coauthor && (
+                    <span className="text-[0.8rem] text-muted whitespace-nowrap">
+                      w/ {item.coauthor}
+                    </span>
+                  )}
+                </span>
               </a>
             </FadeIn>
           ))}
