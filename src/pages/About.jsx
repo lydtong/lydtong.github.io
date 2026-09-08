@@ -33,7 +33,7 @@ export default function About() {
                 originally from Bellaire, TX.
               </p>
               <p className="text-body text-[1.05rem] leading-relaxed">
-                Formerly, I worked at{' '}
+                Currently, I'm at{' '}
                 <a
                   href="https://www.inquirer.com/"
                   target="_blank"
@@ -42,8 +42,20 @@ export default function About() {
                 >
                   The Philadelphia Inquirer
                 </a>{' '}
-                as a Sports Video Production Intern, where I had a ball covering
+                as a Sports Video Production Intern, having a ball covering
                 Philly's professional sports teams.
+              </p>
+              <p className="text-body text-[1.05rem] leading-relaxed">
+                I am also at{' '}
+                <a
+                  href="https://www.afterquery.com/"
+                  target="_blank"
+                  rel="noopener"
+                  className="text-dark-green underline underline-offset-[3px] transition-opacity hover:opacity-65"
+                >
+                  AfterQuery
+                </a>{' '}
+                advancing frontier AI models.
               </p>
               <p className="text-body text-[1.05rem] leading-relaxed">
                 I enjoy backpacking (most recently, the South Rim of the Grand

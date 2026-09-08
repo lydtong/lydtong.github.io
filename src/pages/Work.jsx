@@ -50,20 +50,8 @@ export default function Work() {
               Currently:
             </span>
             <ul className="list-disc pl-6 text-body text-base leading-relaxed space-y-1">
-              <li>
-                Strategic Projects at{' '}
-                <a
-                  href="https://www.afterquery.com/"
-                  target="_blank"
-                  rel="noopener"
-                  className="text-dark-green underline underline-offset-[3px] transition-opacity hover:opacity-65"
-                >
-                  AfterQuery
-                </a>
-                , advancing frontier models (San Francisco, CA)
-              </li>
-              <li>Writing my first feature film</li>
-              <li>Planning the Tour De Mont Blanc</li>
+              <li>Writing a culinary feature film</li>
+              <li>Planning the Tour de Mont Blanc</li>
             </ul>
           </div>
         </FadeIn>
