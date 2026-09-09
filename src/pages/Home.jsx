@@ -65,6 +65,10 @@ export default function Home() {
         <div className="shrink-0 pt-4 flex justify-end relative z-20">
           <p className="font-serif text-[clamp(0.7rem,0.85vw,0.95rem)] font-bold text-muted tracking-wide text-right animate-[fadeIn_0.9s_ease_0.6s_both]">
             Film &amp; Economics, University of Pennsylvania
+            <br />
+            <a href="https://www.inquirer.com/" target="_blank" rel="noopener" className="text-muted no-underline transition-opacity hover:opacity-65">The Philadelphia Inquirer</a>
+            {', '}
+            <a href="https://www.afterquery.com/" target="_blank" rel="noopener" className="text-muted no-underline transition-opacity hover:opacity-65">AfterQuery</a>
           </p>
         </div>
       </section>
