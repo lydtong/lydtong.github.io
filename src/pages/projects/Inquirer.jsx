@@ -55,6 +55,7 @@ const bylines = [
 ]
 
 const instagramData = {
+  'Tyrese Maxey walks a dog in the 2025 National Dog Show': { views: 324000, likes: 22600, reelUrl: 'https://www.instagram.com/reel/DRLHLI0kSFb/' },
   "Howie Roseman responds to 'unfair' recent reporting around Jalen Hurts": { views: 5756, likes: 131, reelUrl: 'https://www.instagram.com/reel/DXIarfTkZXv/' },
   'Porter Martone takes the ice for the first time as a member of the Flyers': { views: 4280, likes: 224, reelUrl: 'https://www.instagram.com/reel/DWmImWYEfpn/' },
   "Eagles owner Jeffrey Lurie provides an update on the team's stadium situation": { views: 42600, likes: 593, reelUrl: 'https://www.instagram.com/reel/DWl-ncXESVt/' },
@@ -69,6 +70,8 @@ const instagramData = {
   'Hang out with Flyers defenseman Cam York during the 2026 Flyers Carnival': { views: 7252, likes: 157, reelUrl: 'https://www.instagram.com/reel/DU1b-w7kdqS/' },
   'Breaking down the top candidates to replace Kevin Patullo as Eagles offensive coordinator': { views: 6271, likes: 156, reelUrl: 'https://www.instagram.com/reel/DTfwWeaEUUn/' },
   'Sixers guard Kyle Lowry receives standing ovation from Raptors fans': { views: 13300, likes: 640, reelUrl: 'https://www.instagram.com/reel/DTd5wTQkUrD/' },
+  "How do Eagles fans feel about Brandon Graham's return?": { views: 2751, likes: 74, reelUrl: 'https://www.instagram.com/reel/DQKfyDKkUN_/' },
+  "Scenes from the latest chapter in the St. Joe's Prep-La Salle rivalry": { views: 37200, likes: 728, reelUrl: 'https://www.instagram.com/reel/DPeEUyDkXV8/' },
 }
 
 const rankedBylines = bylines
