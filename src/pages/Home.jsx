@@ -10,7 +10,7 @@ const navItems = [
 export default function Home() {
   return (
     <div className="flex flex-col">
-      <section className="relative flex flex-col h-screen px-8 md:px-16 py-10 bg-cream">
+      <section className="relative flex flex-col min-h-screen px-8 md:px-16 py-10 bg-cream">
         {/* Film grain */}
         <div
           className="absolute inset-0 pointer-events-none z-10 opacity-[0.055]"
@@ -20,7 +20,7 @@ export default function Home() {
         />
 
         {/* Top: photo + nav */}
-        <div className="flex justify-end shrink-0 relative z-20">
+        <div className="flex justify-end shrink-0 relative z-30">
           <div>
             <div className="w-[clamp(100px,15vw,230px)] aspect-square overflow-hidden shrink-0 shadow-[0_8px_40px_rgba(0,46,9,0.16)] animate-[fadeIn_1s_ease_0.2s_both]">
               <img
@@ -46,7 +46,7 @@ export default function Home() {
         </div>
 
         {/* Name — fills remaining space, pushed to bottom */}
-        <div className="flex-1 flex flex-col justify-end relative z-20 min-h-0">
+        <div className="flex-1 flex flex-col justify-end relative z-20 pt-6">
           <h1>
             <div className="overflow-hidden text-[clamp(4rem,13vw,17rem)] leading-[0.9] pb-[0.15em] -mb-[0.15em]">
               <span className="block text-dark-green tracking-[-0.04em] leading-[0.9] animate-[swoop_1.1s_cubic-bezier(0.76,0,0.24,1)_0.05s_both]">

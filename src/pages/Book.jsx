@@ -3,6 +3,8 @@ import BackNav from '../components/BackNav'
 import SlugLine from '../components/SlugLine'
 import FadeIn from '../components/FadeIn'
 
+const bookingFormUrl = 'https://docs.google.com/forms/d/e/1FAIpQLScH3t5Ww47sKxIXhFd9A7cqUUgE2bRlHg8PZBQwOnEd0l2Huw/viewform'
+
 export default function Book() {
   return (
     <PageTransition>
@@ -16,10 +18,16 @@ export default function Book() {
         </FadeIn>
         <FadeIn delay={0.1}>
           <p className="text-muted mb-6">As serious as you want it to be.</p>
+          <p className="text-muted mb-6">
+            Trouble viewing the form?{' '}
+            <a href={bookingFormUrl} target="_blank" rel="noopener noreferrer" className="text-dark-green underline underline-offset-4">
+              Open the booking form in a new tab ↗
+            </a>
+          </p>
         </FadeIn>
         <FadeIn delay={0.15}>
           <iframe
-            src="https://docs.google.com/forms/d/e/1FAIpQLScH3t5Ww47sKxIXhFd9A7cqUUgE2bRlHg8PZBQwOnEd0l2Huw/viewform?embedded=true"
+            src={`${bookingFormUrl}?embedded=true`}
             width="100%"
             height="600"
             frameBorder="0"
