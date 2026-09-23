@@ -1,7 +1,6 @@
+import SlugLine from '../components/SlugLine'
 import { useState } from 'react'
 import PageTransition from '../components/PageTransition'
-import BackNav from '../components/BackNav'
-import SlugLine from '../components/SlugLine'
 import FadeIn from '../components/FadeIn'
 import Lightbox from '../components/Lightbox'
 
@@ -17,7 +16,6 @@ export default function About() {
   return (
     <PageTransition>
       <div className="max-w-[1200px] mx-auto px-8 md:px-12 py-16 md:py-20 w-full">
-        <BackNav />
         <SlugLine text="Int. About — Present Day" />
         <FadeIn>
           <h2 className="text-[clamp(3.5rem,7vw,7rem)] text-dark-green tracking-tight leading-[0.92] mb-10">
@@ -25,47 +23,48 @@ export default function About() {
           </h2>
         </FadeIn>
 
-        <div className="flex flex-col md:flex-row gap-10 md:gap-16 items-center">
-          <FadeIn className="flex-[1.2]">
-            <div className="space-y-6">
+        <div className="grid grid-cols-1 md:grid-cols-[minmax(0,1.2fr)_minmax(0,0.8fr)] gap-10 md:gap-20 lg:gap-28 items-start">
+          <FadeIn className="min-w-0">
+            <div className="space-y-6 font-serif text-body text-[1.05rem] leading-relaxed">
               <p className="text-body text-[1.05rem] leading-relaxed">
                 I'm a film and economics student at the University of Pennsylvania,
                 originally from Bellaire, TX.
               </p>
               <p className="text-body text-[1.05rem] leading-relaxed">
-                Currently, I'm at{' '}
-                <a
-                  href="https://www.inquirer.com/"
-                  target="_blank"
-                  rel="noopener"
-                  className="text-dark-green underline underline-offset-[3px] transition-opacity hover:opacity-65"
-                >
-                  The Philadelphia Inquirer
-                </a>{' '}
-                as a Sports Video Production Intern, having a ball covering
-                Philly's professional sports teams.
-              </p>
-              <p className="text-body text-[1.05rem] leading-relaxed">
-                I am also at{' '}
-                <a
-                  href="https://www.afterquery.com/"
-                  target="_blank"
-                  rel="noopener"
-                  className="text-dark-green underline underline-offset-[3px] transition-opacity hover:opacity-65"
-                >
-                  AfterQuery
-                </a>{' '}
-                advancing frontier AI models.
-              </p>
-              <p className="text-body text-[1.05rem] leading-relaxed">
                 I enjoy backpacking (most recently, the South Rim of the Grand
                 Canyon), intuitive cooking, DJing, and reading film scripts.
               </p>
+              <div className="text-body text-[1.05rem] leading-relaxed">
+                <p>Currently, I'm:</p>
+                <ul className="list-disc pl-5 mt-2 space-y-1">
+                  <li>Writing a culinary feature film</li>
+                  <li>Planning a PNW car camping adventure</li>
+                </ul>
+              </div>
+              <section className="about-credentials" aria-labelledby="experience-heading">
+                <h3 id="experience-heading">Experience</h3>
+                <div className="about-credential-row">
+                  <p><a href="https://www.afterquery.com/" target="_blank" rel="noopener noreferrer">AfterQuery</a> / Strategic Projects &amp; Operations</p>
+                </div>
+                <div className="about-credential-row">
+                  <p><a href="https://www.inquirer.com/" target="_blank" rel="noopener noreferrer">The Philadelphia Inquirer</a> / Sports Video Production</p>
+                </div>
+                <div className="about-credential-row">
+                  <p><a href="https://www.thedp.com/" target="_blank" rel="noopener noreferrer">The Daily Pennsylvanian</a> / Sports Media Editor</p>
+                </div>
+              </section>
+              <section className="about-credentials" aria-labelledby="education-heading">
+                <h3 id="education-heading">Education</h3>
+                <div className="about-credential-row">
+                  <p>University of Pennsylvania / Cinema &amp; Media Studies, Economics</p>
+                  <span>2028</span>
+                </div>
+              </section>
             </div>
           </FadeIn>
 
-          <FadeIn delay={0.15} className="flex-1">
-            <div className="flex flex-col gap-8 items-center">
+          <FadeIn delay={0.15} className="w-full md:justify-self-end">
+            <div className="flex flex-col gap-8 items-end">
               <img
                 src="/B&W/IMG_1273.JPG"
                 alt="Photo 1"

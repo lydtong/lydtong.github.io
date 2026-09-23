@@ -1,87 +1,29 @@
+import SlugLine from '../components/SlugLine'
 import { Link } from 'react-router-dom'
 import PageTransition from '../components/PageTransition'
-import BackNav from '../components/BackNav'
-import SlugLine from '../components/SlugLine'
 import FadeIn from '../components/FadeIn'
 
-const workItems = [
-  {
-    num: '01',
-    title: 'The Philadelphia Inquirer',
-    tags: 'Eagles · Sixers · Phillies · Union · Flyers · College · High School',
-    logline: 'Sports video production covering every major Philadelphia team.',
-    year: '2025',
-    to: '/work/inquirer',
-  },
-  {
-    num: '02',
-    title: 'The Daily Pennsylvanian',
-    tags: 'Super Bowl LIX · Penn Relays · Athletics Coverage · ACP Award Winner',
-    logline: 'Award-winning multimedia coverage for Penn\'s independent student newspaper.',
-    year: '2023–24',
-    to: '/work/daily-pennsylvanian',
-  },
-  {
-    num: '03',
-    title: 'Projects + Freelance',
-    tags: 'Short Films · Scripts · Photoshoots',
-    logline: 'Independent short films, photography, and creative direction.',
-    year: '2022–',
-    to: '/work/freelance',
-  },
+const projects = [
+  { title: 'The Philadelphia Inquirer', type: 'Sports video · 2025–Present', to: '/work/inquirer', image: '/inquirer-icon.png', alt: 'The Philadelphia Inquirer I logo', className: 'project-inquirer' },
+  { title: 'The Daily Pennsylvanian', type: 'Photojournalism · Penn', to: '/work/daily-pennsylvanian', image: '/DP/dp6.jpg', alt: 'A basketball player rises toward the hoop during a Penn game', className: 'project-penn' },
+  { title: 'Projects + Freelance', type: 'Film · Photography · Creative direction', to: '/work/freelance', image: '/Freelance/233-LYD07346.jpg', alt: 'Portrait surrounded by records in a music shop', className: 'project-freelance' },
 ]
 
 export default function Work() {
   return (
     <PageTransition>
-      <div className="max-w-[1200px] mx-auto px-8 md:px-12 py-16 md:py-20">
-        <BackNav />
-        <SlugLine text="Ext. Selected Works — Ongoing" />
-        <FadeIn>
-          <h2 className="text-[clamp(3.5rem,7vw,7rem)] text-dark-green tracking-tight leading-[0.92] mb-8">
-            Work
-          </h2>
-        </FadeIn>
-
-        {/* Currently */}
-        <FadeIn delay={0.1}>
-          <div className="mb-10">
-            <span className="font-mono text-[0.7rem] tracking-[0.2em] uppercase text-muted block mb-2">
-              Currently:
-            </span>
-            <ul className="list-disc pl-6 text-body text-base leading-relaxed space-y-1">
-              <li>Writing a culinary feature film</li>
-              <li>Planning the Tour de Mont Blanc</li>
-            </ul>
-          </div>
-        </FadeIn>
-
-        {/* Work list */}
-        <div className="border-t border-border">
-          {workItems.map((item, i) => (
-            <FadeIn key={item.num} delay={0.05 * i}>
-              <Link
-                to={item.to}
-                className="group grid grid-cols-[2.5rem_1fr_auto_auto] md:grid-cols-[3.5rem_1fr_auto_auto] gap-4 md:gap-8 items-center py-8 md:py-9 border-b border-border no-underline transition-all duration-200 hover:bg-dark-green/[0.03] hover:pl-4 hover:pr-4 hover:-mx-4"
-              >
-                <span className="text-[0.75rem] text-dark-green/25 tracking-wide self-start pt-1">
-                  {item.num}
-                </span>
-                <div>
-                  <h3 className="text-[clamp(1.3rem,2.2vw,1.9rem)] text-dark-green leading-tight mb-1 transition-colors group-hover:text-mid-green">
-                    {item.title}
-                  </h3>
-                  <p className="text-[0.9rem] text-muted">{item.tags}</p>
-                  <p className="text-[0.88rem] italic text-muted max-h-0 overflow-hidden opacity-0 transition-all duration-300 group-hover:max-h-12 group-hover:opacity-100 group-hover:mt-2 leading-relaxed">
-                    {item.logline}
-                  </p>
-                </div>
-                <span className="font-mono text-[0.72rem] tracking-wide text-dark-green/30 self-center whitespace-nowrap hidden md:block">
-                  {item.year}
-                </span>
-                <span className="text-2xl text-dark-green/15 font-sans leading-none transition-all duration-200 group-hover:text-dark-green group-hover:translate-x-1">
-                  →
-                </span>
+      <div className="editorial-page">
+        <SlugLine text="Int. Selected Works — Ongoing" />
+        <div className="work-heading">
+          <h1 className="editorial-title">Work</h1>
+        </div>
+        <div className="project-grid">
+          {projects.map((project, i) => (
+            <FadeIn key={project.to} delay={i * 0.06} className={project.className}>
+              <Link to={project.to} className="project-card">
+                <div className="project-image"><img src={project.image} alt={project.alt} loading={i ? 'lazy' : 'eager'} /><span className="project-open" aria-hidden="true">↗</span></div>
+                <div className="project-meta"><p className="eyebrow">{project.type}</p><span className="eyebrow">0{i + 1}</span></div>
+                <h2>{project.title}</h2>
               </Link>
             </FadeIn>
           ))}
