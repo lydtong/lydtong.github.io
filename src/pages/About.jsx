@@ -155,7 +155,7 @@ export default function About() {
               <img
                 src={stripImages[0]}
                 alt="Photo"
-                className="w-[85%] aspect-[3/4] object-cover cursor-pointer shadow-[0_2px_10px_rgba(0,46,9,0.1)] transition-all duration-200 hover:opacity-80 hover:scale-[1.01]"
+                className="w-[65%] aspect-[3/4] object-cover cursor-pointer shadow-[0_2px_10px_rgba(0,46,9,0.1)] transition-all duration-200 hover:opacity-80 hover:scale-[1.01]"
                 onClick={() => setLbIndex(0)}
               />
               <img
@@ -167,7 +167,7 @@ export default function About() {
               <img
                 src={stripImages[2]}
                 alt="Photo"
-                className="w-[80%] aspect-[3/4] object-cover cursor-pointer shadow-[0_2px_10px_rgba(0,46,9,0.1)] transition-all duration-200 hover:opacity-80 hover:scale-[1.01] rotate-1"
+                className="w-[60%] aspect-[3/4] object-cover cursor-pointer shadow-[0_2px_10px_rgba(0,46,9,0.1)] transition-all duration-200 hover:opacity-80 hover:scale-[1.01]"
                 onClick={() => setLbIndex(2)}
               />
             </div>
