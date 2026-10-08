@@ -60,6 +60,72 @@ export default function About() {
                   <span>2028</span>
                 </div>
               </section>
+              <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-10">
+                {/* National Parks */}
+                <div>
+                  <h4 className="font-mono text-[0.7rem] tracking-[0.2em] uppercase text-muted mb-3 pb-3 border-b border-border">
+                    National Parks
+                  </h4>
+                  <ul className="space-y-4">
+                    {[
+                      { name: 'Grand Canyon', location: 'Arizona' },
+                      { name: 'Zion', location: 'Utah' },
+                      { name: 'Bryce Canyon', location: 'Utah' },
+                      { name: 'Death Valley', location: 'California' },
+                      { name: 'Yosemite', location: 'California' },
+                      { name: 'Yellowstone', location: 'Wyoming' },
+                      { name: 'White Sands', location: 'New Mexico' },
+                      { name: 'Carlsbad Caverns', location: 'New Mexico' },
+                      { name: 'Guadalupe Mountains', location: 'Texas' },
+                      { name: 'Big Bend', location: 'Texas' },
+                      { name: 'Hot Springs', location: 'Arkansas' },
+                      { name: 'Arches', location: 'Utah' },
+                      { name: 'Badlands', location: 'South Dakota' },
+                      { name: 'Everglades', location: 'Florida' },
+                    ].map((park) => (
+                      <li key={park.name}>
+                        <span className="font-serif text-dark-green text-[1.1rem] leading-tight block">
+                          {park.name}
+                        </span>
+                        <span className="font-mono text-[0.68rem] tracking-wide text-muted">
+                          {park.location}
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* Favorite Hikes */}
+                <div>
+                  <h4 className="font-mono text-[0.7rem] tracking-[0.2em] uppercase text-muted mb-3 pb-3 border-b border-border">
+                    Favorite Hikes
+                  </h4>
+                  <ul className="space-y-4">
+                    {[
+                      { name: 'South Kaibab to Bright Angel', loc: 'Rim-to-Rim — Grand Canyon NP, AZ' },
+                      { name: 'The Narrows', loc: 'Zion NP, UT' },
+                      { name: 'Fairyland Loop', loc: 'Bryce Canyon NP, UT' },
+                      { name: "Devil's Garden Primitive Loop", loc: 'Arches NP, UT' },
+                      { name: 'Natural Entrance Route', loc: 'Carlsbad Caverns NP, NM' },
+                      { name: 'Alkali Flat Trail', loc: 'White Sands NP, NM' },
+                    ].map((hike, i) => (
+                      <li key={hike.name} className="flex gap-3">
+                        <span className="font-serif text-dark-green/25 text-[1rem] leading-tight shrink-0 w-6">
+                          {String(i + 1).padStart(2, '0')}
+                        </span>
+                        <div>
+                          <span className="font-serif text-dark-green text-[1.1rem] leading-tight block">
+                            {hike.name}
+                          </span>
+                          <span className="font-mono text-[0.68rem] tracking-wide text-muted">
+                            {hike.loc}
+                          </span>
+                        </div>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             </div>
           </FadeIn>
 
@@ -93,6 +159,7 @@ export default function About() {
             ))}
           </div>
         </FadeIn>
+
       </div>
 
       <Lightbox
