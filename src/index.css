@@ -55,7 +55,7 @@ body {
 .name-home { min-height:calc(100svh - 82px); padding:36px 5vw 44px; display:flex; flex-direction:column; }
 .home-kicker { display:flex; justify-content:space-between; gap:16px; font:11px var(--font-mono); text-transform:uppercase; letter-spacing:.08em; color:var(--color-muted); }
 .name-stage { flex:1; display:flex; flex-direction:column; justify-content:center; align-items:center; padding:70px 0 60px; }
-.wordmark { display:flex; justify-content:center; align-items:baseline; font-size:clamp(60px,24vw,340px); line-height:1.1; letter-spacing:-.01em; color:var(--color-dark-green); margin:0; width:100%; font-weight:700; text-transform:uppercase; -webkit-text-stroke:0.5px var(--color-dark-green); }
+.wordmark { display:flex; justify-content:center; align-items:baseline; font-size:clamp(60px,24vw,340px); line-height:1.1; letter-spacing:-.01em; color:var(--color-dark-green); margin:0; width:100%; font-weight:700; -webkit-text-stroke:0.5px var(--color-dark-green); }
 .name-piece { font:inherit; letter-spacing:inherit; line-height:inherit; padding:0; border:0; background:none; color:inherit; cursor:pointer; }
 .name-letters { display:inline-block; transform-origin:50% 100%; animation:name-jump 1050ms var(--jump-delay) both; }
 .name-piece-0 { --tilt:-7deg; }.name-piece-1 { --tilt:8deg; }.name-piece-2 { --tilt:-4deg; }
