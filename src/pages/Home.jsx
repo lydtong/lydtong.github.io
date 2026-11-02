@@ -12,7 +12,7 @@ const logos = {
   'The Daily Pennsylvanian': DPLogo,
 }
 
-const aboutPhotos = ['/B&W/IMG_1273.JPG', '/B&W/IMG_1272.JPG', '/B&W/IMG_2600.JPG', '/B&W/IMG_7552.JPG', '/B&W/IMG_1274.JPG']
+const aboutPhotos = ['/B&W/IMG_1272.JPG', '/B&W/IMG_1274.JPG', '/B&W/IMG_7552.JPG']
 
 function useScrollToHash() {
   const { hash } = useLocation()
