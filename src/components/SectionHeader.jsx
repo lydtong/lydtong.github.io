@@ -1,7 +1,7 @@
-export default function SectionHeader({ number, label }) {
+export default function SectionHeader({ label }) {
   return (
     <div className="section-head">
-      <span>{number}. {label}</span>
+      <span>{label}</span>
     </div>
   )
 }

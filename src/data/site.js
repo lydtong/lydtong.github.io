@@ -3,8 +3,6 @@ export const experience = [
   {
     company: 'AfterQuery',
     url: 'https://www.afterquery.com/',
-    logo: '/logos/afterquery.png',
-    initials: 'AQ',
     role: 'Strategic Projects & Operations',
     start: '2026-06',
     end: null,
@@ -14,8 +12,6 @@ export const experience = [
   {
     company: 'The Philadelphia Inquirer',
     url: 'https://www.inquirer.com/',
-    logo: '/inquirer-icon.png',
-    initials: 'PI',
     role: 'Sports Video Production Intern',
     start: '2025-09',
     end: null,
@@ -25,8 +21,6 @@ export const experience = [
   {
     company: 'The Daily Pennsylvanian',
     url: 'https://www.thedp.com/',
-    logo: '/logos/dp.png',
-    initials: 'DP',
     role: 'Sports Media Editor',
     start: '2024-08',
     end: '2025-08',

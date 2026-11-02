@@ -45,23 +45,23 @@ body {
 .mono-label { font-family: var(--font-mono); font-size: 12px; line-height: 1.8; letter-spacing: 0.5px; text-transform: uppercase; color: var(--color-mid-green); }
 .container-rr { max-width: 1000px; margin: 0 auto; padding-left: max(24px, env(safe-area-inset-left, 0px)); padding-right: max(24px, env(safe-area-inset-right, 0px)); }
 
-/* Header: full-width fixed bar, 48px gutters, like Ricky's */
-.site-header { position: sticky; top: 0; z-index: 40; background: color-mix(in srgb, var(--color-cream) 92%, transparent); backdrop-filter: blur(6px); border-bottom: 1px solid color-mix(in srgb, var(--color-light-green) 50%, transparent); }
-.site-header-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 14px 48px; }
-.wordmark { font-family: var(--font-mono); font-weight: 700; font-size: 16px; letter-spacing: 1px; text-transform: uppercase; color: var(--color-ink); text-decoration: none; line-height: 1.3; }
-.coords { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.5px; line-height: 1.6; color: var(--color-dark-green); }
+/* Header: full-width bar, 14px/48px padding, 74px tall, like Ricky's */
+.site-header { position: sticky; top: 0; z-index: 40; background: var(--color-cream); display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 14px 48px; }
+.brand { display: flex; flex-direction: column; }
+.wordmark { font-family: var(--font-mono); font-weight: 700; font-size: 16px; line-height: 25.6px; letter-spacing: 1px; text-transform: uppercase; color: var(--color-ink); text-decoration: none; }
+.coords { font-family: var(--font-mono); font-size: 12px; line-height: 19.2px; letter-spacing: 0.5px; color: var(--color-dark-green); }
 .site-header nav { display: flex; gap: 32px; flex-wrap: wrap; justify-content: flex-end; }
-.site-header nav a { font-family: var(--font-mono); font-size: 13px; letter-spacing: 1px; text-transform: uppercase; color: var(--color-body); text-decoration: none; padding-bottom: 4px; transition: color .2s; }
+.site-header nav a { font-family: var(--font-mono); font-size: 13px; line-height: 20.8px; letter-spacing: 1px; text-transform: uppercase; color: var(--color-body); text-decoration: none; padding-bottom: 4px; transition: color .2s; }
 .site-header nav a:hover { color: var(--color-dark-green); }
 
-/* Section label: "01. ABOUT ─────", 48px below, 80px after each section */
+/* Section label: "ABOUT ─────", 48px below, 80px after each section */
 .section { padding: 0 0 80px; scroll-margin-top: 96px; }
 .section-head { display: flex; align-items: center; gap: 16px; margin-bottom: 48px; }
 .section-head span { font-family: var(--font-mono); font-size: 12px; line-height: 1.6; letter-spacing: 2px; text-transform: uppercase; color: var(--color-mid-green); white-space: nowrap; }
 .section-head::after { content: ''; flex: 1; height: 1px; background: color-mix(in srgb, var(--color-light-green) 60%, transparent); }
 
-/* Hero */
-.hero { padding: 24px 0 80px; display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 64px; align-items: center; }
+/* Hero: fills the first screen, content vertically centered like Ricky's */
+.hero { min-height: calc(100vh - 74px); padding: 48px 0 80px; display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 64px; align-items: center; align-content: center; }
 .hero h1 { font-family: var(--font-serif); font-weight: 400; font-size: 96px; line-height: 0.9; letter-spacing: -2px; margin: 0 0 24px; color: var(--color-ink); }
 .hero-bio { border-left: 1px solid var(--color-light-green); padding-left: 24px; max-width: 500px; }
 .hero-bio p { font-family: var(--font-serif); font-size: 22px; line-height: 32px; color: var(--color-body); margin: 0; }
@@ -80,21 +80,19 @@ body {
 .btn:hover .arrow { transform: translateX(4px); }
 .btn-back:hover .arrow { transform: translateX(-4px); }
 
-/* About */
-.about-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 64px; align-items: start; }
-.edu-card { border: 1px solid color-mix(in srgb, var(--color-light-green) 60%, transparent); padding: 24px; display: grid; grid-template-columns: 28px 1fr; gap: 4px 16px; align-items: start; }
-.edu-card .logo-mark { grid-row: span 4; margin-top: 2px; }
-.edu-card h3 { font-family: var(--font-serif); font-size: 24px; line-height: 1.3; font-weight: 400; margin: 0 0 4px; color: var(--color-ink); }
-.about-photos { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-.about-photos figure { margin: 0; border: 1px solid color-mix(in srgb, var(--color-light-green) 60%, transparent); background: var(--color-paper-texture); overflow: hidden; cursor: pointer; }
-.about-photos figure.wide { grid-column: 1 / -1; }
+/* About: education block matches Ricky's (full width, 16px padding, white wash) */
+.edu-card { display: flex; align-items: flex-start; gap: 16px; padding: 16px; border: 1px solid var(--color-light-green); background: rgba(255, 255, 255, 0.3); margin-bottom: 24px; }
+.edu-card .logo-mark { margin-top: 2px; }
+.edu-school { font-family: var(--font-serif); font-size: 17.6px; line-height: 28px; margin: 0 0 4px; color: var(--color-ink); }
+.edu-detail { font-family: var(--font-mono); font-size: 12px; line-height: 21.6px; letter-spacing: 0.5px; text-transform: uppercase; color: var(--color-mid-green); margin: 0; }
+.about-photos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.about-photos figure { margin: 0; border: 1px solid var(--color-light-green); background: var(--color-paper-texture); overflow: hidden; cursor: pointer; }
 .about-photos img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; transition: transform .5s ease, opacity .2s; }
-.about-photos figure.tall img { aspect-ratio: 3 / 4; }
 .about-photos figure:hover img { transform: scale(1.03); opacity: .92; }
 
-/* Logo marks: 28px rounded squares beside company chips */
-.logo-mark { width: 28px; height: 28px; border-radius: 6px; overflow: hidden; flex-shrink: 0; background: #000; display: grid; place-items: center; font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: 0; color: #fff; }
-.logo-mark img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* Logo marks: 28px squares beside company chips */
+.logo-mark { width: 28px; height: 28px; flex-shrink: 0; display: block; }
+.logo-mark svg { display: block; }
 
 /* Experience timeline */
 .timeline { position: relative; }
@@ -161,16 +159,17 @@ body {
 .subpage h2 { font-family: var(--font-serif); font-weight: 400; font-size: 32px; margin: 0 0 16px; color: var(--color-ink); }
 
 @media (max-width: 760px) {
-  .site-header-inner { align-items: flex-start; flex-direction: column; gap: 8px; padding: 12px 24px 10px; }
+  .site-header { align-items: flex-start; flex-direction: column; gap: 8px; padding: 12px 24px 10px; }
   .coords { display: none; }
   .site-header nav { justify-content: flex-start; gap: 4px 16px; }
   .site-header nav a { font-size: 11px; padding-bottom: 2px; }
   .section { scroll-margin-top: 110px; padding-bottom: 64px; }
-  .hero { grid-template-columns: 1fr; gap: 32px; padding: 32px 0 64px; }
+  .hero { min-height: 0; grid-template-columns: 1fr; gap: 32px; padding: 40px 0 64px; }
+  .about-photos { grid-template-columns: 1fr 1fr; }
   .hero h1 { font-size: 64px; }
   .hero-bio p { font-size: 20px; line-height: 30px; }
   .hero-photo { max-width: 320px; }
-  .about-grid, .lists, .work-grid { grid-template-columns: 1fr; gap: 40px; }
+  .lists, .work-grid { grid-template-columns: 1fr; gap: 40px; }
   .stats { gap: 40px; }
   .job { padding-left: 32px; }
 }

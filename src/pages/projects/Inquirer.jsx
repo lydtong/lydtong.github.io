@@ -83,7 +83,7 @@ export default function Inquirer() {
       <div className="container-rr subpage">
         <BackNav />
         <FadeIn>
-          <div className="mono-label" style={{ marginTop: 40 }}>03. Work — 01</div>
+          <div className="mono-label" style={{ marginTop: 40 }}>Work — 01</div>
           <h1>The Philadelphia Inquirer</h1>
         </FadeIn>
         <FadeIn delay={0.1}>

@@ -12,20 +12,16 @@ export default function SiteHeader() {
   const onHome = useLocation().pathname === '/'
   return (
     <header className="site-header">
-      <div className="container-rr site-header-inner">
-        <div>
-          <Link to="/" className="wordmark">Lydia Tong</Link>
-          <div className="coords">39.9526° N, 75.1652° W</div>
-        </div>
-        <nav aria-label="Sections">
-          {sections.map((s, i) => {
-            const text = `0${i + 1}. ${s.label}`
-            return onHome
-              ? <a key={s.id} href={`#${s.id}`}>{text}</a>
-              : <Link key={s.id} to={{ pathname: '/', hash: `#${s.id}` }}>{text}</Link>
-          })}
-        </nav>
+      <div className="brand">
+        <Link to="/" className="wordmark">Lydia Tong</Link>
+        <span className="coords">39.9526° N, 75.1652° W</span>
       </div>
+      <nav aria-label="Sections">
+        {sections.map((s) => onHome
+          ? <a key={s.id} href={`#${s.id}`}>{s.label}</a>
+          : <Link key={s.id} to={{ pathname: '/', hash: `#${s.id}` }}>{s.label}</Link>
+        )}
+      </nav>
     </header>
   )
 }

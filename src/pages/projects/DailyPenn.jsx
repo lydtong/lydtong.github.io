@@ -11,7 +11,7 @@ export default function DailyPenn() {
       <div className="container-rr subpage">
         <BackNav />
         <FadeIn>
-          <div className="mono-label" style={{ marginTop: 40 }}>03. Work — 02</div>
+          <div className="mono-label" style={{ marginTop: 40 }}>Work — 02</div>
           <h1>The Daily Pennsylvanian</h1>
         </FadeIn>
         <FadeIn delay={0.1}>

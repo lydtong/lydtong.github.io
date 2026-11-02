@@ -62,7 +62,7 @@ export default function FreelancePage() {
       <div className="container-rr subpage">
         <BackNav />
         <FadeIn>
-          <div className="mono-label" style={{ marginTop: 40 }}>03. Work — 03</div>
+          <div className="mono-label" style={{ marginTop: 40 }}>Work — 03</div>
           <h1>Projects + Freelance</h1>
         </FadeIn>
 

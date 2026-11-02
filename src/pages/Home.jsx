@@ -2,17 +2,17 @@ import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import FadeIn from '../components/FadeIn'
 import Lightbox from '../components/Lightbox'
-import LogoMark from '../components/LogoMark'
 import SectionHeader from '../components/SectionHeader'
+import { PennLogo, AfterQueryLogo, DPLogo, InquirerLogo } from '../components/logos'
 import { experience, projects, parks, hikes, bookingFormUrl, formatMonth, duration } from '../data/site'
 
-const aboutPhotos = [
-  { src: '/B&W/IMG_1273.JPG', cls: 'wide' },
-  { src: '/B&W/IMG_1272.JPG', cls: 'tall' },
-  { src: '/B&W/IMG_2600.JPG', cls: 'tall' },
-  { src: '/B&W/IMG_7552.JPG', cls: '' },
-  { src: '/B&W/IMG_1274.JPG', cls: '' },
-]
+const logos = {
+  AfterQuery: AfterQueryLogo,
+  'The Philadelphia Inquirer': InquirerLogo,
+  'The Daily Pennsylvanian': DPLogo,
+}
+
+const aboutPhotos = ['/B&W/IMG_1273.JPG', '/B&W/IMG_1272.JPG', '/B&W/IMG_2600.JPG', '/B&W/IMG_7552.JPG', '/B&W/IMG_1274.JPG']
 
 function useScrollToHash() {
   const { hash } = useLocation()
@@ -43,55 +43,57 @@ export default function Home() {
       </section>
 
       <section id="about" className="section">
-        <SectionHeader number="01" label="About" />
-        <div className="about-grid">
-          <FadeIn>
-            <div className="edu-card">
-              <LogoMark name="University of Pennsylvania" src="/logos/penn.png" fallback="UP" />
-              <h3>University of Pennsylvania</h3>
-              <span className="mono-label">Cinema &amp; Media Studies, Economics</span>
-              <span className="mono-label">Minor in Data Science &amp; Analytics</span>
-              <span className="mono-label">Class of 2028</span>
+        <SectionHeader label="About" />
+        <FadeIn>
+          <div className="edu-card">
+            <span className="logo-mark"><PennLogo /></span>
+            <div>
+              <p className="edu-school">University of Pennsylvania</p>
+              <p className="edu-detail">Cinema &amp; Media Studies, Economics</p>
+              <p className="edu-detail">Minor in Data Science &amp; Analytics</p>
             </div>
-          </FadeIn>
-          <FadeIn delay={0.1}>
-            <div className="about-photos">
-              {aboutPhotos.map((p, i) => (
-                <figure key={p.src} className={p.cls} onClick={() => setLb(i)}>
-                  <img src={p.src} alt="" loading="lazy" />
-                </figure>
-              ))}
-            </div>
-          </FadeIn>
-        </div>
+          </div>
+        </FadeIn>
+        <FadeIn delay={0.1}>
+          <div className="about-photos">
+            {aboutPhotos.map((src, i) => (
+              <figure key={src} onClick={() => setLb(i)}>
+                <img src={src} alt="" loading="lazy" />
+              </figure>
+            ))}
+          </div>
+        </FadeIn>
       </section>
 
       <section id="experience" className="section">
-        <SectionHeader number="02" label="Experience" />
+        <SectionHeader label="Experience" />
         <div className="timeline">
-          {experience.map((job, i) => (
-            <FadeIn key={job.company} delay={i * 0.06}>
-              <article className={`job${job.end ? '' : ' current'}`}>
-                <div className="job-head">
-                  <LogoMark name={job.company} src={job.logo} fallback={job.initials} />
-                  <a className="job-company" href={job.url} target="_blank" rel="noopener">{job.company}</a>
-                </div>
-                <h3>{job.role}</h3>
-                <div className="job-dates">
-                  {formatMonth(job.start)} — {job.end ? formatMonth(job.end) : 'PRESENT'} · {duration(job.start, job.end)}
-                </div>
-                <div className="job-loc">{job.location}</div>
-                <ul className="tags">
-                  {job.tags.map((t) => <li key={t} className="tag">{t}</li>)}
-                </ul>
-              </article>
-            </FadeIn>
-          ))}
+          {experience.map((job, i) => {
+            const Logo = logos[job.company]
+            return (
+              <FadeIn key={job.company} delay={i * 0.06}>
+                <article className={`job${job.end ? '' : ' current'}`}>
+                  <div className="job-head">
+                    <span className="logo-mark"><Logo /></span>
+                    <a className="job-company" href={job.url} target="_blank" rel="noopener">{job.company}</a>
+                  </div>
+                  <h3>{job.role}</h3>
+                  <div className="job-dates">
+                    {formatMonth(job.start)} — {job.end ? formatMonth(job.end) : 'PRESENT'} · {duration(job.start, job.end)}
+                  </div>
+                  <div className="job-loc">{job.location}</div>
+                  <ul className="tags">
+                    {job.tags.map((t) => <li key={t} className="tag">{t}</li>)}
+                  </ul>
+                </article>
+              </FadeIn>
+            )
+          })}
         </div>
       </section>
 
       <section id="work" className="section">
-        <SectionHeader number="03" label="Work" />
+        <SectionHeader label="Work" />
         <div className="work-grid">
           {projects.map((p, i) => (
             <FadeIn key={p.to} delay={i * 0.06}>
@@ -111,7 +113,7 @@ export default function Home() {
       </section>
 
       <section id="adventures" className="section">
-        <SectionHeader number="04" label="Adventures" />
+        <SectionHeader label="Adventures" />
         <FadeIn>
           <div className="stats">
             <div className="stat"><strong>{parks.length}</strong><span className="mono-label">National Parks</span></div>
@@ -146,7 +148,7 @@ export default function Home() {
       </section>
 
       <section id="book" className="section">
-        <SectionHeader number="05" label="Book" />
+        <SectionHeader label="Book" />
         <FadeIn>
           <p className="book-lede">As serious as you want it to be.</p>
           <div className="book-frame">
@@ -161,7 +163,7 @@ export default function Home() {
       </section>
 
       <Lightbox
-        images={aboutPhotos.map((p) => p.src)}
+        images={aboutPhotos}
         index={lb}
         onClose={() => setLb(null)}
         onNav={(dir) => setLb((prev) => (prev + dir + aboutPhotos.length) % aboutPhotos.length)}
