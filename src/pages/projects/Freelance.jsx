@@ -1,4 +1,4 @@
-import SlugLine from '../../components/SlugLine'
+import BackNav from '../../components/BackNav'
 import PageTransition from '../../components/PageTransition'
 import FadeIn from '../../components/FadeIn'
 import FilmEntry from '../../components/FilmEntry'
@@ -33,7 +33,7 @@ const photos = [
 
 const tunnelVisionDesc = (
   <div className="space-y-4">
-    <p className="text-body text-base leading-relaxed">
+    <p className="text-body text-[1.1rem] leading-relaxed">
       TUNNEL VISION is a psychological corporate thriller set within the
       high-pressure, hyper-competitive culture at the University of
       Pennsylvania. The story follows Eric and Dalton, two freshman year
@@ -59,12 +59,11 @@ const tunnelVisionDesc = (
 export default function FreelancePage() {
   return (
     <PageTransition>
-      <div className="max-w-[1200px] mx-auto px-8 md:px-12 py-16 md:py-20 w-full">
-        <SlugLine text="Int. Independent Work — Various Locations" />
+      <div className="container-rr subpage">
+        <BackNav />
         <FadeIn>
-          <h2 className="text-[clamp(3rem,6vw,6rem)] text-dark-green tracking-tight leading-[0.92] mb-8">
-            Projects + Freelance
-          </h2>
+          <div className="mono-label" style={{ marginTop: 40 }}>03. Work — 03</div>
+          <h1>Projects + Freelance</h1>
         </FadeIn>
 
         <FilmEntry
@@ -77,7 +76,7 @@ export default function FreelancePage() {
 
         <hr className="border-t border-border my-14" />
         <FadeIn>
-          <h3 className="text-2xl text-dark-green mb-4">Photography</h3>
+          <h2>Photography</h2>
         </FadeIn>
 
         <PhotoGrid images={photos} />

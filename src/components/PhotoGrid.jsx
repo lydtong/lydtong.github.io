@@ -42,7 +42,7 @@ export default function PhotoGrid({ images, columns = 3 }) {
               src={src}
               alt={alt}
               loading="lazy"
-              className={`w-full block mb-3 break-inside-avoid cursor-pointer shadow-[0_2px_10px_rgba(0,46,9,0.1)] transition-all duration-500 hover:opacity-80 hover:scale-[1.01] ${
+              className={`w-full block mb-3 break-inside-avoid cursor-pointer border border-border transition-all duration-500 hover:opacity-80 hover:scale-[1.01] ${
                 visibleSet.has(i) ? 'opacity-100' : 'opacity-0'
               }`}
               onClick={() => setLbIndex(i)}

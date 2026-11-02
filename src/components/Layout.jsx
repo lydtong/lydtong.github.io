@@ -1,11 +1,13 @@
 import { Outlet } from 'react-router-dom'
 import Footer from './Footer'
-import SiteNav from './SiteNav'
+import SiteHeader from './SiteHeader'
+import TopoBackground from './TopoBackground'
 
 export default function Layout() {
   return (
     <div className="min-h-screen flex flex-col">
-      <SiteNav />
+      <TopoBackground />
+      <SiteHeader />
       <main className="flex-1">
         <Outlet />
       </main>

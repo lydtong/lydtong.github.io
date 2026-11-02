@@ -1,4 +1,4 @@
-import SlugLine from '../../components/SlugLine'
+import BackNav from '../../components/BackNav'
 import PageTransition from '../../components/PageTransition'
 import FadeIn from '../../components/FadeIn'
 
@@ -80,15 +80,14 @@ const rankedBylines = bylines
 export default function Inquirer() {
   return (
     <PageTransition>
-      <div className="max-w-[1200px] mx-auto px-8 md:px-12 py-16 md:py-20 w-full">
-        <SlugLine text="Int. The Philadelphia Inquirer — Sports Desk" />
+      <div className="container-rr subpage">
+        <BackNav />
         <FadeIn>
-          <h2 className="text-[clamp(3rem,6vw,6rem)] text-dark-green tracking-tight leading-[0.92] mb-6">
-            The Philadelphia Inquirer
-          </h2>
+          <div className="mono-label" style={{ marginTop: 40 }}>03. Work — 01</div>
+          <h1>The Philadelphia Inquirer</h1>
         </FadeIn>
         <FadeIn delay={0.1}>
-          <p className="text-body text-[1.05rem] leading-relaxed mb-12 max-w-[700px]">
+          <p className="lede">
             Sports Video Production Intern covering the Eagles, Sixers, Phillies,
             Union, Flyers, and local college and high school teams.
           </p>
@@ -103,9 +102,9 @@ export default function Inquirer() {
                   href={item.url}
                   target="_blank"
                   rel="noopener"
-                  className="group block no-underline rounded-sm overflow-hidden transition-all duration-300 hover:shadow-[0_8px_30px_rgba(0,46,9,0.12)] hover:-translate-y-1"
+                  className="group block no-underline overflow-hidden border border-border bg-paper-texture/70 transition-all duration-300 hover:shadow-[0_12px_30px_rgba(0,46,9,0.12)] hover:-translate-y-1 hover:border-dark-green"
                 >
-                  <div className="aspect-[3/2] overflow-hidden bg-dark-green/5">
+                  <div className="aspect-[3/2] overflow-hidden bg-paper-texture border-b border-border">
                     {item.image ? (
                       <img
                         src={item.image}
@@ -119,7 +118,7 @@ export default function Inquirer() {
                       </div>
                     )}
                   </div>
-                  <div className="px-3 pt-3 pb-4 bg-cream">
+                  <div className="px-3 pt-3 pb-4">
                     <div className="flex items-center gap-2 mb-2 flex-wrap">
                       <span className={`text-[0.6rem] font-mono tracking-wider uppercase px-[6px] py-[1px] rounded-sm border ${teamStyles[team]}`}>
                         {team}
@@ -133,7 +132,7 @@ export default function Inquirer() {
                         </span>
                       )}
                     </div>
-                    <h3 className="text-dark-green text-[0.92rem] leading-snug transition-colors group-hover:text-mid-green line-clamp-3">
+                    <h3 className="font-serif text-ink text-[1.15rem] leading-snug transition-colors group-hover:text-dark-green line-clamp-3">
                       {item.title}
                     </h3>
                     {item.coauthor && (
