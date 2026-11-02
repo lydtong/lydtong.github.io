@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import FadeIn from '../components/FadeIn'
 import Lightbox from '../components/Lightbox'
+import LogoMark from '../components/LogoMark'
 import SectionHeader from '../components/SectionHeader'
 import { experience, projects, parks, hikes, bookingFormUrl, formatMonth, duration } from '../data/site'
 
@@ -46,6 +47,7 @@ export default function Home() {
         <div className="about-grid">
           <FadeIn>
             <div className="edu-card">
+              <LogoMark name="University of Pennsylvania" src="/logos/penn.png" fallback="UP" />
               <h3>University of Pennsylvania</h3>
               <span className="mono-label">Cinema &amp; Media Studies, Economics</span>
               <span className="mono-label">Minor in Data Science &amp; Analytics</span>
@@ -70,15 +72,18 @@ export default function Home() {
           {experience.map((job, i) => (
             <FadeIn key={job.company} delay={i * 0.06}>
               <article className={`job${job.end ? '' : ' current'}`}>
-                <a className="job-company" href={job.url} target="_blank" rel="noopener">{job.company}</a>
+                <div className="job-head">
+                  <LogoMark name={job.company} src={job.logo} fallback={job.initials} />
+                  <a className="job-company" href={job.url} target="_blank" rel="noopener">{job.company}</a>
+                </div>
                 <h3>{job.role}</h3>
                 <div className="job-dates">
                   {formatMonth(job.start)} — {job.end ? formatMonth(job.end) : 'PRESENT'} · {duration(job.start, job.end)}
                 </div>
                 <div className="job-loc">{job.location}</div>
-                <div className="tags">
-                  {job.tags.map((t) => <span key={t} className="tag">{t}</span>)}
-                </div>
+                <ul className="tags">
+                  {job.tags.map((t) => <li key={t} className="tag">{t}</li>)}
+                </ul>
               </article>
             </FadeIn>
           ))}
@@ -143,7 +148,7 @@ export default function Home() {
       <section id="book" className="section">
         <SectionHeader number="05" label="Book" />
         <FadeIn>
-          <p className="lede" style={{ fontSize: 22, color: 'var(--color-muted)', margin: '0 0 28px' }}>As serious as you want it to be.</p>
+          <p className="book-lede">As serious as you want it to be.</p>
           <div className="book-frame">
             <iframe src={`${bookingFormUrl}?embedded=true`} title="Booking form" />
           </div>
