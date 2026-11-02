@@ -48,6 +48,7 @@ export default function Home() {
             <div className="edu-card">
               <h3>University of Pennsylvania</h3>
               <span className="mono-label">Cinema &amp; Media Studies, Economics</span>
+              <span className="mono-label">Minor in Data Science &amp; Analytics</span>
               <span className="mono-label">Class of 2028</span>
             </div>
           </FadeIn>
