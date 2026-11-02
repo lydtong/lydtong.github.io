@@ -62,7 +62,7 @@ body {
 .section-head::after { content: ''; flex: 1; height: 1px; background: color-mix(in srgb, var(--color-light-green) 60%, transparent); }
 
 /* Hero: fills the first screen, content vertically centered like Ricky's */
-.hero { padding: 72px 0 80px; display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 64px; align-items: center; }
+.hero { padding: 104px 0 104px; display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 64px; align-items: center; }
 .hero h1 { font-family: var(--font-serif); font-weight: 400; font-size: 96px; line-height: 0.9; letter-spacing: -2px; margin: 0 0 24px; color: var(--color-ink); }
 .hero-bio { border-left: 1px solid var(--color-light-green); padding-left: 24px; max-width: 500px; }
 .hero-bio p { font-family: var(--font-serif); font-size: 22px; line-height: 32px; color: var(--color-body); margin: 0; }
