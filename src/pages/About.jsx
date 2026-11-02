@@ -37,7 +37,7 @@ export default function About() {
               <div className="text-body text-[1.05rem] leading-relaxed">
                 <p>Currently, I'm:</p>
                 <ul className="list-disc pl-5 mt-2 space-y-1">
-                  <li>Writing a culinary feature film</li>
+                  <li>Writing a culinary murder mystery feature film</li>
                   <li>Planning a PNW car camping adventure</li>
                 </ul>
               </div>
