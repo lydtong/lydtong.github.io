@@ -67,6 +67,8 @@ body {
 .hero-bio { border-left: 1px solid var(--color-light-green); padding-left: 24px; max-width: 500px; }
 .hero-bio p { font-family: var(--font-serif); font-size: 22px; line-height: 32px; color: var(--color-body); margin: 0; }
 .hero-bio p + p { margin-top: 12px; }
+.hero-bio ul { margin: 4px 0 0; padding-left: 1.2em; list-style: disc; }
+.hero-bio li { font-family: var(--font-serif); font-size: 22px; line-height: 32px; color: var(--color-body); }
 .hero-bio strong { font-weight: 700; color: var(--color-body); }
 .hero-photo { border: 2px solid var(--color-light-green); background: var(--color-paper-texture); }
 .hero-photo img { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; object-position: center 15%; display: block; }

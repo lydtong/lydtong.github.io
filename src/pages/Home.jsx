@@ -33,8 +33,13 @@ export default function Home() {
         <div>
           <h1>Lydia Tong</h1>
           <div className="hero-bio">
-            <p>Film and Economics at the <strong>University of Pennsylvania</strong>, originally from Bellaire, TX.</p>
-            <p>Currently writing a culinary murder mystery feature film, planning a car camping adventure down the PNW.</p>
+            <p>Film and Economics from Bellaire, TX.</p>
+            <p>I enjoy backpacking (most recently, the South Rim of the Grand Canyon), intuitive cooking, DJing, and reading film scripts.</p>
+            <p>Currently, I'm:</p>
+            <ul>
+              <li>Writing a culinary murder mystery feature film</li>
+              <li>Planning a PNW car camping adventure</li>
+            </ul>
           </div>
         </div>
         <div className="hero-photo">
