@@ -70,20 +70,20 @@ export default function CursorTrail() {
         if (p.life <= 0) { particles.splice(i, 1); continue }
         ctx.beginPath()
         ctx.arc(p.x, p.y, p.size * p.life, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(0, 46, 9, ${p.opacity})`
+        ctx.fillStyle = `rgba(239, 244, 195, ${p.opacity})`
         ctx.fill()
       }
       if (mouse.x > 0 && mouse.y > 0 && !overPhoto(mouse.x, mouse.y)) {
         const glow = ctx.createRadialGradient(mouse.x, mouse.y, 0, mouse.x, mouse.y, 60)
-        glow.addColorStop(0, 'rgba(74, 107, 74, 0.08)')
-        glow.addColorStop(1, 'rgba(74, 107, 74, 0)')
+        glow.addColorStop(0, 'rgba(239, 244, 195, 0.08)')
+        glow.addColorStop(1, 'rgba(239, 244, 195, 0)')
         ctx.beginPath()
         ctx.arc(mouse.x, mouse.y, 60, 0, Math.PI * 2)
         ctx.fillStyle = glow
         ctx.fill()
         ctx.beginPath()
         ctx.arc(mouse.x, mouse.y, 3, 0, Math.PI * 2)
-        ctx.fillStyle = 'rgba(0, 46, 9, 0.25)'
+        ctx.fillStyle = 'rgba(239, 244, 195, 0.25)'
         ctx.fill()
       }
       frame = requestAnimationFrame(draw)
