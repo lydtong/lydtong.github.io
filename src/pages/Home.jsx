@@ -34,7 +34,7 @@ export default function Home() {
           <h1>Lydia Tong</h1>
           <div className="hero-bio">
             <p>Film and Economics from Bellaire, TX.</p>
-            <p>I enjoy backpacking (most recently, the South Rim of the Grand Canyon), intuitive cooking, DJing, and reading film scripts.</p>
+            <p>I enjoy backpacking (most recently, the High Peaks of the Adirondacks), intuitive cooking, DJing, and reading film scripts.</p>
             <p>Currently, I'm:</p>
             <ul>
               <li>Writing a culinary murder mystery feature film</li>
