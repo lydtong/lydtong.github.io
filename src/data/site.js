@@ -54,6 +54,7 @@ export const parks = [
 
 export const hikes = [
   { name: 'South Kaibab to Bright Angel', location: 'Rim-to-Rim — Grand Canyon NP, AZ' },
+  { name: 'Mount Marcy', location: 'High Peaks — Adirondacks, NY' },
   { name: 'The Narrows', location: 'Zion NP, UT' },
   { name: 'Fairyland Loop', location: 'Bryce Canyon NP, UT' },
   { name: "Devil's Garden Primitive Loop", location: 'Arches NP, UT' },
