@@ -164,8 +164,6 @@ a { color: var(--color-ink); }
 
 /* Book */
 .book-lede { font-family: var(--font-mono); font-size: 14px; line-height: 1.5; color: var(--color-ink); margin: 0 0 24px; }
-.book-frame { border: 1px dashed var(--color-dash); background: var(--color-paper-texture); padding: 8px; }
-.book-frame iframe { width: 100%; height: 640px; border: 0; display: block; background: transparent; }
 
 /* Footer */
 .site-footer { position: relative; z-index: 2; border-top: 1px dashed var(--color-dash); }

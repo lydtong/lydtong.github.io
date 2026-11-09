@@ -156,14 +156,9 @@ export default function Home() {
         <SectionHeader label="Book" />
         <FadeIn>
           <p className="book-lede">As serious as you want it to be.</p>
-          <div className="book-frame">
-            <iframe src={`${bookingFormUrl}?embedded=true`} title="Booking form" />
-          </div>
-          <p style={{ marginTop: 20 }}>
-            <a className="btn btn-outline" href={bookingFormUrl} target="_blank" rel="noopener noreferrer">
-              Open the form in a new tab <span className="arrow">→</span>
-            </a>
-          </p>
+          <a className="btn" href={bookingFormUrl} target="_blank" rel="noopener noreferrer">
+            Open the booking form <span className="arrow">→</span>
+          </a>
         </FadeIn>
       </section>
 
