@@ -91,7 +91,9 @@ a { color: var(--color-ink); }
 .work-link { margin-top: 28px !important; }
 .work-link a { font-family: var(--font-mono); font-size: 13px; letter-spacing: 1px; text-transform: uppercase; border-bottom: 1px solid var(--color-ink); padding-bottom: 2px; }
 .work-link a:hover { opacity: .8; }
-.intro .btn { margin-bottom: 24px; color: var(--color-cream); border-bottom: 1.5px solid rgba(239, 244, 195, 0.25); }
+.back-link { margin: 0 0 28px !important; }
+.work-link-inline { font-family: var(--font-mono); font-size: 13px; letter-spacing: 1px; text-transform: uppercase; color: var(--color-ink); text-decoration: none; border-bottom: 1px solid var(--color-ink); padding-bottom: 2px; }
+.work-link-inline:hover { opacity: .8; }
 .intro h1 + .work-grid { margin-top: 24px; }
 .book-line { margin-top: 3rem !important; }
 
