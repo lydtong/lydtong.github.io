@@ -92,8 +92,8 @@ a { color: var(--color-ink); }
 .work-link a { font-family: var(--font-serif); font-size: 15px; letter-spacing: 1px; text-transform: uppercase; border-bottom: 1px solid var(--color-ink); padding-bottom: 2px; }
 .work-link a:hover { opacity: .8; }
 .back-link { margin: 0 0 28px !important; }
-.work-link-inline { font-family: var(--font-serif); font-size: 15px; letter-spacing: 1px; text-transform: uppercase; color: var(--color-ink); text-decoration: none; border-bottom: 1px solid var(--color-ink); padding-bottom: 2px; }
-.work-link-inline:hover { opacity: .8; }
+
+
 .intro h1 + .work-grid { margin-top: 24px; }
 .book-line { margin-top: 3rem !important; }
 
@@ -126,11 +126,11 @@ a { color: var(--color-ink); }
 .site-footer a { color: var(--color-ink); text-decoration: none; border-bottom: 1px dotted rgba(239, 244, 195, 0.5); transition: border-color .2s; }
 .site-footer a:hover { border-bottom-color: var(--color-ink); }
 
-/* Subpages */
-.subpage { padding: 48px 0 0; }
-.subpage h1 { font-family: var(--font-serif); font-weight: 400; font-size: clamp(42px, 6vw, 72px); line-height: 1.05; letter-spacing: -1px; margin: 16px 0 24px; color: var(--color-ink); }
-.subpage .lede { font-family: var(--font-serif); font-size: 18px; line-height: 1.6; color: var(--color-ink); max-width: 720px; margin: 0 0 48px; }
-.subpage h2 { font-family: var(--font-serif); font-weight: 400; font-size: 32px; margin: 0 0 16px; color: var(--color-ink); }
+/* Subpages share the Work column: same name size, same paragraph rhythm */
+.intro .mono-label { margin-top: 4px; }
+.intro .lede { font-family: var(--font-serif); font-size: 17px; line-height: 1.6; color: var(--color-ink); max-width: 640px; margin: 0 0 32px; }
+.intro h2 { font-family: var(--font-serif); font-weight: 600; font-size: 24px; line-height: 1.6; margin: 0 0 16px; color: var(--color-ink); }
+.intro h1 + .lede { margin-top: -5px; }
 
 @media (max-width: 760px) {
   body { font-size: 13px; }

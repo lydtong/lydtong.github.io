@@ -80,10 +80,10 @@ const rankedBylines = bylines
 export default function Inquirer() {
   return (
     <PageTransition>
-      <div className="container-rr subpage">
-        <BackNav />
+      <div className="page-col wide intro">
+        <p className="work-link back-link"><BackNav /></p>
         <FadeIn>
-          <div className="mono-label" style={{ marginTop: 40 }}>Work — 01</div>
+          <div className="mono-label">Work — 01</div>
           <h1>The Philadelphia Inquirer</h1>
         </FadeIn>
         <FadeIn delay={0.1}>

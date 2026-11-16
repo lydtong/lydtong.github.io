@@ -59,10 +59,10 @@ const tunnelVisionDesc = (
 export default function FreelancePage() {
   return (
     <PageTransition>
-      <div className="container-rr subpage">
-        <BackNav />
+      <div className="page-col wide intro">
+        <p className="work-link back-link"><BackNav /></p>
         <FadeIn>
-          <div className="mono-label" style={{ marginTop: 40 }}>Work — 03</div>
+          <div className="mono-label">Work — 03</div>
           <h1>Projects + Freelance</h1>
         </FadeIn>
 

@@ -8,10 +8,10 @@ const photos = Array.from({ length: 12 }, (_, i) => `/DP/dp${i + 1}.jpg`)
 export default function DailyPenn() {
   return (
     <PageTransition>
-      <div className="container-rr subpage">
-        <BackNav />
+      <div className="page-col wide intro">
+        <p className="work-link back-link"><BackNav /></p>
         <FadeIn>
-          <div className="mono-label" style={{ marginTop: 40 }}>Work — 02</div>
+          <div className="mono-label">Work — 02</div>
           <h1>The Daily Pennsylvanian</h1>
         </FadeIn>
         <FadeIn delay={0.1}>
