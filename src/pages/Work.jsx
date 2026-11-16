@@ -4,7 +4,8 @@ import { projects, bookingFormUrl } from '../data/site'
 
 export default function Work() {
   return (
-    <div className="container-rr intro">
+    <div className="page-col wide intro">
+      <Link to="/" className="btn btn-back"><span className="arrow">←</span> Back</Link>
       <h1>Work</h1>
       <div className="work-grid">
         {projects.map((p, i) => (

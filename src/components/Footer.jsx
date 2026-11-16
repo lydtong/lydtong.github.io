@@ -1,21 +1,20 @@
 const links = [
-  { label: 'LinkedIn', href: 'https://www.linkedin.com/in/lydiatong' },
-  { label: 'Instagram', href: 'https://www.instagram.com/lydiatongmedia' },
-  { label: 'Letterboxd', href: 'https://letterboxd.com/lydtong' },
+  { label: 'linkedin', href: 'https://www.linkedin.com/in/lydiatong' },
+  { label: 'instagram', href: 'https://www.instagram.com/lydiatongmedia' },
+  { label: 'letterboxd', href: 'https://letterboxd.com/lydtong' },
 ]
 
 export default function Footer() {
   return (
     <footer className="site-footer">
-      <div className="container-rr site-footer-inner">
-        <span>© {new Date().getFullYear()} Lydia Tong</span>
-        <div className="site-footer-links">
-          {links.map((l) => (
-            <a key={l.label} href={l.href} target="_blank" rel="noopener">{l.label}</a>
-          ))}
-          <a className="email" href="mailto:lydtong@sas.upenn.edu">lydtong@sas.upenn.edu</a>
-        </div>
-      </div>
+      <p className="page-col site-footer-inner">
+        {links.map((l, i) => (
+          <span key={l.label}>
+            {i > 0 && ' / '}
+            <a href={l.href} target="_blank" rel="noopener">{l.label}</a>
+          </span>
+        ))}
+      </p>
     </footer>
   )
 }
