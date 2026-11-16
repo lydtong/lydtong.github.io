@@ -89,6 +89,7 @@ a { color: var(--color-ink); }
 .intro a { color: var(--color-ink); text-decoration: none; border-bottom: 1px dotted rgba(239, 244, 195, 0.5); transition: border-color .2s; }
 .intro a:hover { border-bottom-color: var(--color-ink); }
 .work-link { margin-top: 28px !important; }
+.intro > .work-link:last-child { text-align: center; margin-top: 48px !important; }
 .work-link a { font-family: var(--font-serif); font-size: 15px; letter-spacing: 1px; text-transform: uppercase; border-bottom: 1px solid var(--color-ink); padding-bottom: 2px; }
 .work-link a:hover { opacity: .8; }
 .back-link { margin: 0 0 28px !important; }
