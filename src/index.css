@@ -85,8 +85,11 @@ a { color: var(--color-ink); }
 .intro { padding: 16px 0 4rem; }
 .intro h1 { font-family: var(--font-serif); font-weight: 400; font-size: 32px; line-height: 1.5; margin: 0; color: var(--color-ink); }
 .intro h1 + p, .intro h1 + .work-grid { margin-top: 1.5rem; }
-.intro p { font-family: var(--font-mono); font-size: 14px; line-height: 1.5; margin: 0; color: var(--color-ink); }
-.intro p + p { margin-top: 21px; }
+.intro p { font-family: var(--font-serif); font-size: 20px; line-height: 1.5; margin: 0; color: var(--color-ink); }
+.intro p + p { margin-top: 14px; }
+.intro-home { min-height: calc(100vh - 74px - 193px); display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; margin-left: 0; margin-right: 0; max-width: none; padding-left: max(24px, env(safe-area-inset-left, 0px)); }
+.intro-home h1 { font-size: 40px; }
+.intro-home h1 + p { margin-top: 1.25rem; }
 .intro a { color: var(--color-ink); text-decoration: none; border-bottom: 1px dotted rgba(239, 244, 195, 0.4); transition: border-color .2s; }
 .intro a:hover { border-bottom-color: var(--color-ink); }
 .book-line { margin-top: 3rem !important; }
@@ -140,7 +143,8 @@ a { color: var(--color-ink); }
   .site-header nav { justify-content: flex-start; gap: 4px 16px; }
   .site-header nav a { font-size: 11px; padding-bottom: 2px; }
   .intro h1 { font-size: 24px; }
-  .intro p { font-size: 13px; }
+  .intro p { font-size: 17px; }
+  .intro-home { min-height: calc(100vh - 110px - 193px); }
   .work-grid { grid-template-columns: 1fr; gap: 24px; }
 }
 

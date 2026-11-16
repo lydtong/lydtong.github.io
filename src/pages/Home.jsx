@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 
 export default function Home() {
   return (
-    <div className="container-rr intro">
+    <div className="container-rr intro intro-home">
       <h1>Lydia Tong</h1>
       <p>Bellaire, TX.</p>
       <p>Film &amp; Economics / Data Science and Analytics, University of Pennsylvania.</p>
