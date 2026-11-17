@@ -137,6 +137,7 @@ a { color: var(--color-ink); }
   body { font-size: 13px; }
   .dash-col { left: 1.5rem; }
   .container-rr { margin-left: calc(1.5rem + 1px); padding-left: 16px; }
+  .page-col, .page-col.wide { padding-left: calc(1.5rem + 1px + 16px); padding-right: 20px; }
   .site-header { height: 56px; padding: 0 24px 0 calc(1.5rem + 1px + 16px); }
   .dash-row { display: none; }
   .coords { display: none; }
